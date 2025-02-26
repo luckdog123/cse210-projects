@@ -21,7 +21,7 @@ class Program
         }
         if (i_see_youre_drinking_two_percent >= 90){
             grade_letter = "A";
-            if (sign == "+"){
+            if (sign == "+" || i_see_youre_drinking_two_percent > 100){
                 sign = " ";
             }
         } 
