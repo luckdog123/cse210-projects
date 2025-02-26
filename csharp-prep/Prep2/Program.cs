@@ -8,18 +8,19 @@ class Program
         Console.WriteLine("Welcome to the grade calculator! Today we will find out if your going to fail your class. What % do you have in your class?");
         int i_see_youre_drinking_two_percent = int.Parse(Console.ReadLine());
         string grade_letter = "A";
+        string sign = "";
         int sign_logic = i_see_youre_drinking_two_percent % 10;
         if (sign_logic == 3){
-            string sign = "-";
+            sign = "-";
         }
         else if (sign_logic == 7){
-            string sign = "+";
+            sign = "+";
         }
         else{
-            string sign = " ";
+            sign = " ";
         }
          
-        if (i_see_youre_drinking_two_percent <= 70)
+        if (i_see_youre_drinking_two_percent >= 70)
         {
             Console.WriteLine($"Congrats! you are passing the class keep up the good work! Your letter grade is {grade_letter}{sign}");
         }
