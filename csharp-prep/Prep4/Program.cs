@@ -17,11 +17,25 @@ class Program
         } while (user_input != "DONE");
 
         int total = 0;
+        int da_biggest_num = 0;
+        int smallest_num = 999999999;
         foreach(int num in lystsTM){
             total = total + num;
+            if(da_biggest_num < num){
+                da_biggest_num = num;
+            }
+            if(smallest_num > num){
+                smallest_num = num;
+            }
+
         }
+
+
         Console.WriteLine($"Here is the total {total}.");
         Console.WriteLine($"Here is the advrage value {total / lystsTM.Count}");
+        Console.WriteLine($"Here is the largest and smallest numbers respectivly. {da_biggest_num} and {smallest_num}");
+
+
         
         // foreach (int i in lystsTM){
         //     Console.Write(i + " ");
