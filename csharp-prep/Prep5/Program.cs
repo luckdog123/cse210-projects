@@ -10,7 +10,7 @@ class Program
         static string getDaName(){
             Console.WriteLine("Hello stranger! Welcome to the program!!");
             Console.WriteLine("Now its time for us to get to know you what is your name?");
-            string name  = Console.ReadLine();
+            string name = Console.ReadLine();
             return name;
         } 
         static float getDaFavoriteNumber(){
@@ -26,6 +26,8 @@ class Program
             float favnumnum = getDaFavoriteNumber();
             finalState(nam , favnumnum);
         }
+
+
         daFunction();
     }
 }
