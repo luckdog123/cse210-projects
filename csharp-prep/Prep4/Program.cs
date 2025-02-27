@@ -15,9 +15,17 @@ class Program
                 lystsTM.Add(int.Parse(user_input));
             }
         } while (user_input != "DONE");
-        foreach (int i in lystsTM){
-            Console.Write(i + " ");
+
+        int total = 0;
+        foreach(int num in lystsTM){
+            total = total + num;
         }
+        Console.WriteLine(total);
+
+        
+        // foreach (int i in lystsTM){
+        //     Console.Write(i + " ");
+        // }
         
     }
 }
