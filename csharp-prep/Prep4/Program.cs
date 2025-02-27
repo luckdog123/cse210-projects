@@ -16,7 +16,7 @@ class Program
             }
         } while (user_input != "DONE");
         foreach (int i in lystsTM){
-            Console.Write(lystsTM);
+            Console.Write(i + " ");
         }
         
     }
