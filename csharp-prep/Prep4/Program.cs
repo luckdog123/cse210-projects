@@ -30,16 +30,14 @@ class Program
 
         }
 
-
+        lystsTM.Sort();
         Console.WriteLine($"Here is the total {total}.");
         Console.WriteLine($"Here is the advrage value {total / lystsTM.Count}");
         Console.WriteLine($"Here is the largest and smallest numbers respectivly. {da_biggest_num} and {smallest_num}");
-
-
-        
-        // foreach (int i in lystsTM){
-        //     Console.Write(i + " ");
-        // }
+        Console.WriteLine("");
+        foreach (int i in lystsTM){
+            Console.Write(i + " ");
+        }
         
     }
 }
