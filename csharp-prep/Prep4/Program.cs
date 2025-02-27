@@ -38,6 +38,6 @@ class Program
         foreach (int i in lystsTM){
             Console.Write(i + " ");
         }
-        
+    //bruh 
     }
 }
