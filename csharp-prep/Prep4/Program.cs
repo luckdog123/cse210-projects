@@ -20,8 +20,8 @@ class Program
         foreach(int num in lystsTM){
             total = total + num;
         }
-        Console.WriteLine(total);
-
+        Console.WriteLine($"Here is the total {total}.");
+        Console.WriteLine($"Here is the advrage value {total / lystsTM.Count}");
         
         // foreach (int i in lystsTM){
         //     Console.Write(i + " ");
