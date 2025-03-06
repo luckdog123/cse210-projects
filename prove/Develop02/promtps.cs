@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 class Prompts
 {
-    private int _refNumber;
+    // private int _refNumber;
 
    
 
@@ -21,10 +21,10 @@ class Prompts
         { 10, "How could you repent from today?" }
     };
 
-     public Prompts(int num)
-    {
-        _refNumber = num;
-    }
+    //  public Prompts(int num)
+    // {
+    //     _refNumber = num;
+    // }
      public string GetPrompt(int num)
     {
         return journalPrompts[num];  
