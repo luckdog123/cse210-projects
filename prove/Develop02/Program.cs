@@ -10,20 +10,43 @@ class Program
         while (menu_input != "5"){
             
             Console.WriteLine("1. Write a new entry :)");
+
+
             Console.WriteLine("2. Read an old entry.");
             Console.WriteLine("3.");
             Console.WriteLine("4.");
             Console.WriteLine("5. Quit");
             menu_input = Console.ReadLine();
             if (menu_input == "1"){
-                Console.WriteLine("why mee");
+                
                 Random random = new Random();
+                Entry entry = new Entry();
+
                 int randomNumberInRange = random.Next(1, 10);
                 string jornalPrompt = prompts.GetPrompt(randomNumberInRange);
-                Console.WriteLine(jornalPrompt);
+
+                entry.savePromptEntry(jornalPrompt);
+                Console.WriteLine($"The prompt is: {jornalPrompt}");
+                Console.WriteLine("Enter your journal entry: ");
+                entry.SetUserEntry(Console.ReadLine());
+                Console.WriteLine($"Is this what you want to add to your jornal? yes or no?");
+                entry.DisplayEntry();
+                string userResponse = Console.ReadLine();
+
+                if (userResponse == "yes")
+                {
+                    entry.writeToFile();
+                }
+                else
+                {
+                    Console.WriteLine("Entry not saved.");
+                }
+                
+                
             }
             else if (menu_input == "2"){
-                Console.WriteLine("why mee");
+                Entry entry = new Entry();
+                entry.readFromFile();
             }
             else if (menu_input == "3"){
                 Console.WriteLine("why mee");
