@@ -13,8 +13,8 @@ class Program
 
 
             Console.WriteLine("2. Read an old entry.");
-            Console.WriteLine("3.");
-            Console.WriteLine("4.");
+            // Console.WriteLine("3.");
+            // Console.WriteLine("4.");
             Console.WriteLine("5. Quit");
             menu_input = Console.ReadLine();
             if (menu_input == "1"){
@@ -24,15 +24,30 @@ class Program
 
                 int randomNumberInRange = random.Next(1, 10);
                 string jornalPrompt = prompts.GetPrompt(randomNumberInRange);
-
                 entry.savePromptEntry(jornalPrompt);
+                
                 Console.WriteLine($"The prompt is: {jornalPrompt}");
                 Console.WriteLine("Enter your journal entry: ");
                 entry.SetUserEntry(Console.ReadLine());
+
+                // added workout stuff for more jornal stuff and things
+                
+                string workout = "no";
+                Console.WriteLine("Did you work out today? yes or no?");
+                workout = Console.ReadLine().ToLower();   
+
+                if (workout == "yes")
+                {
+                    entry.SetDidYouWorkOut(workout);
+                    Console.WriteLine("What was your workout routine?");
+                    entry.SetWorkOutRutine(Console.ReadLine());
+                }
+
                 Console.WriteLine($"Is this what you want to add to your jornal? yes or no?");
                 entry.DisplayEntry();
-                string userResponse = Console.ReadLine();
 
+
+                string userResponse = Console.ReadLine();
                 if (userResponse == "yes")
                 {
                     entry.writeToFile();
@@ -40,19 +55,11 @@ class Program
                 else
                 {
                     Console.WriteLine("Entry not saved.");
-                }
-                
-                
+                }   
             }
             else if (menu_input == "2"){
                 Entry entry = new Entry();
                 entry.readFromFile();
-            }
-            else if (menu_input == "3"){
-                Console.WriteLine("why mee");
-            }
-            else if (menu_input == "4"){
-                Console.WriteLine("why mee");
             }
             else if (menu_input == "5"){
                 Console.WriteLine("Bye!");
