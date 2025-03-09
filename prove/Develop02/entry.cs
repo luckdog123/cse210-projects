@@ -32,7 +32,7 @@ class Entry
         Console.WriteLine("Enter the file path to save to: ");
         string filePath = Console.ReadLine();
         string textToWrite = $"Date: {DateStuffs} Prompt: {DaPrompt} Entry: {UserEntry}";
-        System.IO.File.WriteAllText(filePath, textToWrite);
+        System.IO.File.WriteAllText(filePath,textToWrite);
     }
     public void readFromFile()
     {
