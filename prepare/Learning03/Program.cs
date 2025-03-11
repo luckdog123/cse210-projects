@@ -8,7 +8,9 @@ class Program
         Fraction fraction = new Fraction();
         fraction.Getuserinput();
         fraction.Display();
+        
 
+        
 
     }
 }

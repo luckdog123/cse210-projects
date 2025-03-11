@@ -1,7 +1,7 @@
 using System;
 
 class Fraction
-{
+{   
     private int numerator;
     private int denominator;
     
@@ -12,7 +12,8 @@ class Fraction
         Console.WriteLine("And here it is as a percentage: " + (double)numerator/denominator * 100 + "%");
     }
 
-    public void Getuserinput(){
+    public void Getuserinput()
+    {
 
         Console.WriteLine("Enter your fraction:");
         string userInput = Console.ReadLine();
@@ -20,8 +21,5 @@ class Fraction
         numerator = int.Parse(fraction[0]);
         denominator = int.Parse(fraction[1]);
 
-        }
-
-
-
+    }
 }
