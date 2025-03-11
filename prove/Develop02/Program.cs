@@ -17,7 +17,7 @@ class Program
             menu_input = Console.ReadLine();
             
             if (menu_input == "1"){
-                
+                Console.Clear();
                 Random random = new Random();
                 Entry entry = new Entry();
 
