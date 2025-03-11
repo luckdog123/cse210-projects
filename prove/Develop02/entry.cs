@@ -53,10 +53,11 @@ class Entry
             System.IO.File.AppendAllText(filePath,textToWrite);
         }
     }
+
     public void readFromFile()    {
         Console.WriteLine("Enter the file path to read from: ");
         string filePath = Console.ReadLine();
         string textFromFile = System.IO.File.ReadAllText(filePath);
         Console.WriteLine(textFromFile);
     }
-}    
+}
