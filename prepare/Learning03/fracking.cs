@@ -5,6 +5,33 @@ class Fraction
     private int numerator;
     private int denominator;
     
+    public Fraction()
+    {
+        numerator = 1;
+        denominator = 1;
+    }
+    public Fraction(int WholeNumber)
+    {
+        numerator = WholeNumber;
+        denominator = 1;
+    }
+
+    public Fraction(int Numerator, int Denominator)
+    {
+        numerator = Numerator;
+        denominator = Denominator;
+    }
+
+    public int GetNumerator()
+    {
+        return numerator;
+    }
+
+    public int getDenominator()
+    {
+        return denominator;
+    }
+
     public void Display()
     {
         Console.WriteLine($"Here it is again: {numerator}/{denominator}");
@@ -22,4 +49,17 @@ class Fraction
         denominator = int.Parse(fraction[1]);
 
     }
+
+    public string GetFractString()
+    {
+        return $"{numerator}/{denominator}";
+    }
+
+    public double GetDecimal()
+    {
+        return (double)numerator/denominator;
+    }
+
+    
+    
 }
