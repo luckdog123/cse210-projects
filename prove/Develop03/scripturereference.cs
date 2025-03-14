@@ -1,7 +1,7 @@
-class ScriptureReference
+class ScriptureReferenceProcesseing
 {
     private string words;
-    public ScriptureReference(string words)
+    public ScriptureReferenceProcesseing(string words)
     {
         this.words = words;
     }
@@ -10,6 +10,6 @@ class ScriptureReference
 
         string[] parsedWords = words.Split(" ");
         return parsedWords;
-
+  
     } 
 }
