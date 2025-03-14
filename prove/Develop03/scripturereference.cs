@@ -11,5 +11,5 @@ class ScriptureReference
         string[] parsedWords = words.Split(" ");
         return parsedWords;
 
-    }
+    } 
 }
