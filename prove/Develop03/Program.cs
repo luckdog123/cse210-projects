@@ -8,9 +8,13 @@ class Program
         double loopCounter = 0;
         loopCounter = (scrt1.GetNumberOfWords())/3;
         scrt1.Display();
+        Console.ReadLine();
+        Console.Clear();
+        loopCounter = loopCounter + 2;
         while (loopCounter > 0)
         {
             string scriptList = scrt1.HideSomeWords(3);
+            
             Console.WriteLine(scriptList);
             // Console.WriteLine(scrt1.HideSomeWords(3));
             Console.ReadLine();
@@ -20,5 +24,5 @@ class Program
         }
        
     }
-    
+
 }

@@ -20,7 +20,22 @@ class Scripture
     {
         this._text = _text;
     }
-    
+    // public Scripture(string name, int startVerse, int endVerse, string _text)
+    // {
+    //     this.name = name;
+    //     this.endVerse = endVerse;
+    //     this.verse = startVerse;
+    //     this._text = _text;
+    // }
+    // public Scripture(ScriptureReference scriptureReference, string _text)
+    // {
+
+    //     this.name = ScriptureReference.name;
+    //     this.chapter = ScriptureReference.chapter;
+    //     this.verse = ScriptureReference.verse;
+    //     this._text = _text;
+
+    // }
     public void Display()
         {
             Console.WriteLine($"{name} {chapter}:{verse} - {_text}");
@@ -37,7 +52,7 @@ class Scripture
         return scriptureReference.parsedVerse(_text);
     }
     
-    string stuffandthings;
+    // string stuffandthings;
     public string HideSomeWords(int HowMany)
     {
         // logic to hide every nth word
@@ -49,6 +64,7 @@ class Scripture
         int nukeIt3 = rnd.Next(1, amount);
 
         
+
         // List<string> parsedVerse = scriptureReference.parsedVerse(_text).ToList();
         
         string[] parsedVerse = dumbFunction();
@@ -70,9 +86,14 @@ class Scripture
                 if (letters == '_')
                 {
                     hiddenChecker = 1;
+                    // rehiddenVerse = rehiddenVerse + " " + i + " ";
+                
                     break;
                 }
-                else{hiddenChecker = 0; rehiddenVerse = rehiddenVerse + i + " ";}
+                else
+                {
+                hiddenChecker = 0; //rehiddenVerse = rehiddenVerse + " " + i + " ";}
+                }
                 break;
             }
 
@@ -80,37 +101,28 @@ class Scripture
             loopCounter++;
             if (hiddenChecker == 0 && (nukeIt1 == loopCounter || nukeIt2 == loopCounter || nukeIt3 == loopCounter))
             {
+                
                 for(int j = 0; j < wordlength; j++)
                 {
-                    rehiddenVerse = rehiddenVerse + "_";
+                    rehiddenVerse = rehiddenVerse + "_" ;
                 }
-
-                
+                rehiddenVerse = rehiddenVerse + " ";
+            }
+            else
+            {
+                rehiddenVerse = rehiddenVerse + " " + i;
+            }
+                  
+             
+        }
+        // parsedVerse = rehiddenVerse.Split(" ");
         return rehiddenVerse;
         
-            }
-}           }}
-// if (wordlength >= amountofhidden)
+    }
+    // if (wordlength >= amountofhidden)
                 // {
                 //     amountofhidden = amountofhidden + 1;
                 //     rehiddenVerse = rehiddenVerse + "_";
                 // }
                 // else{rehiddenVerse = rehiddenVerse + " ";}
-                    
-        // parsedVerse = rehiddenVerse.Split(" ");
-        // public Scripture(string name, int startVerse, int endVerse, string _text)
-    // {
-    //     this.name = name;
-    //     this.endVerse = endVerse;
-    //     this.verse = startVerse;
-    //     this._text = _text;
-    // }
-    // public Scripture(ScriptureReference scriptureReference, string _text)
-    // {
-
-    //     this.name = ScriptureReference.name;
-    //     this.chapter = ScriptureReference.chapter;
-    //     this.verse = ScriptureReference.verse;
-    //     this._text = _text;
-
-    // }
+}
