@@ -4,7 +4,6 @@ class Scripture
     private int chapter;
     private int verse;
     private string _text;
-
     private int _amountOfWordsInVerse;
     private int startVerse;
     private int endVerse;
@@ -20,22 +19,7 @@ class Scripture
     {
         this._text = _text;
     }
-    // public Scripture(string name, int startVerse, int endVerse, string _text)
-    // {
-    //     this.name = name;
-    //     this.endVerse = endVerse;
-    //     this.verse = startVerse;
-    //     this._text = _text;
-    // }
-    // public Scripture(ScriptureReference scriptureReference, string _text)
-    // {
-
-    //     this.name = ScriptureReference.name;
-    //     this.chapter = ScriptureReference.chapter;
-    //     this.verse = ScriptureReference.verse;
-    //     this._text = _text;
-
-    // }
+    
     public void Display()
         {
             Console.WriteLine($"{name} {chapter}:{verse} - {_text}");
@@ -63,15 +47,8 @@ class Scripture
         int nukeIt2 = rnd.Next(1, amount);
         int nukeIt3 = rnd.Next(1, amount);
 
-        
-
-        // List<string> parsedVerse = scriptureReference.parsedVerse(_text).ToList();
-        
         string[] parsedVerse = dumbFunction();
-        // _amountOfWordsInVerse = parsedVerse.Count();
-        // string[] words = parsedVerse(_text);
-        // string[] parsedVerse = new int[words.Length];
-        // stuffandthings = parsedVerse;
+       
         int loopCounter = 0;
         int hiddenChecker = 0;
         int wordlength = 0;
@@ -111,18 +88,32 @@ class Scripture
             else
             {
                 rehiddenVerse = rehiddenVerse + " " + i;
-            }
-                  
-             
+            }    
         }
-        // parsedVerse = rehiddenVerse.Split(" ");
         return rehiddenVerse;
         
     }
+    // parsedVerse = rehiddenVerse.Split(" ");
     // if (wordlength >= amountofhidden)
                 // {
                 //     amountofhidden = amountofhidden + 1;
                 //     rehiddenVerse = rehiddenVerse + "_";
                 // }
                 // else{rehiddenVerse = rehiddenVerse + " ";}
+                // public Scripture(string name, int startVerse, int endVerse, string _text)
+    // {
+    //     this.name = name;
+    //     this.endVerse = endVerse;
+    //     this.verse = startVerse;
+    //     this._text = _text;
+    // }
+    // public Scripture(ScriptureReference scriptureReference, string _text)
+    // {
+
+    //     this.name = ScriptureReference.name;
+    //     this.chapter = ScriptureReference.chapter;
+    //     this.verse = ScriptureReference.verse;
+    //     this._text = _text;
+
+    // }
 }

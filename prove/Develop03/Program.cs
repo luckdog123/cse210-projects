@@ -20,7 +20,7 @@ class Program
             Console.ReadLine();
             Console.Clear();
             scrt1.setList(scriptList);
-            loopCounter = loopCounter - 1;
+            loopCounter = loopCounter - .7;
         }
        
     }
