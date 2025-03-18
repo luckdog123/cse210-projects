@@ -5,6 +5,7 @@ class PoliceMan : Person
     public PoliceMan(string wepons, string firstname, string lastname, int age) : base(firstname, lastname, age)
     {
         _wepons = wepons;
+        _Height = 88;
     }
     
     public string DisplayPoliceManInfo()

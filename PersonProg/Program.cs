@@ -1,6 +1,4 @@
 ﻿// See https://aka.ms/new-console-template for more information
-
-
 class Program
 {
     static void Main(string[] args)
@@ -14,6 +12,10 @@ class Program
         
         TimeLord dr1 = new TimeLord("Rose", "Dr", "Who", 1000);
         Console.WriteLine(dr1.DisplayDrWhoInfo());
+
+        pm1.SetHeight(76);
+        // pm1._Height = 57;
+        Console.WriteLine(pm1.GetHeight());
     }
 }
 
