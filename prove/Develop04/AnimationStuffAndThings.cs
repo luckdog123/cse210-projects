@@ -51,7 +51,7 @@ class AnimateConsole
         int i = 0;
         DateTime start = DateTime.Now;
         DateTime end = start.AddSeconds(_animationLength);
-        while (DateTime.Now < end)
+        while (DateTime.Now <= end)
         {
             Console.Write(_frames[i]);
             Thread.Sleep(_frameRate);
@@ -61,7 +61,6 @@ class AnimateConsole
             {
                 i = 0;
             }
-            
         }
     }
 }
