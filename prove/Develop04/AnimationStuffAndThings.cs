@@ -63,4 +63,18 @@ class AnimateConsole
             }
         }
     }
+    public string DisplayCommonMesg(string message)
+    {   
+        string commonMessage = $"This activity will help you {message}. ";
+        return commonMessage;
+    }
+
+    public string PickingRanQuests(string[] questions)
+    {
+        Random random = new Random();
+        int index = random.Next(questions.Length);
+        return questions[index];
+    }
+    
+
 }
