@@ -29,6 +29,8 @@ class Program
             if (userInput == "1")
             {
                 Console.WriteLine("Breathing Activity");
+                JustBreath jb = new JustBreath(10, 5, 5);
+                jb.openyourmouth();
             }
             else if (userInput == "2")
             {

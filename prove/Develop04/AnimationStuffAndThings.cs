@@ -4,6 +4,7 @@ class AnimateConsole
     private List<string> _frames = new List<string>();
     private int _frameRate;
     private string _message = "";
+    private bool _checkIfCalled = false;
     private List<string> _framesForSpinny = new List<string>()
     {
         "|",
@@ -18,6 +19,10 @@ class AnimateConsole
     {
         
     };
+    public void SetFPS(int frameRate)
+    {
+        _frameRate = frameRate;
+    }
     public void SetFramesForCountdown(int countDown)
     {
         _coundown.Clear();
@@ -25,6 +30,8 @@ class AnimateConsole
         {
             _coundown.Add(i.ToString());
         }
+        _checkIfCalled = true;
+        _frames = _coundown;
     }
     public void SetFramesForSpinny()
     {
@@ -52,9 +59,13 @@ class AnimateConsole
         _message = message;
     }
     
-        
     public void Animate()
     {
+        if (_checkIfCalled == true)
+        {
+        _animationLength = _frames.Count;
+        _frameRate = 1000;
+        }
         int i = 0;
         DateTime start = DateTime.Now;
         DateTime end = start.AddSeconds(_animationLength);
