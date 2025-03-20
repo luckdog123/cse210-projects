@@ -1,24 +1,16 @@
 class AnimateConsole
 {
+
+    // all da variables
     private float _animationLength = 0;
     private List<string> _frames = new List<string>();
     private int _frameRate;
     private string _message = "";
     private bool _checkIfCalled = false;
-    private List<string> _framesForSpinny = new List<string>()
-    {
-        "|",
-        "/",
-        "-",
-        "\\"
-    };
-    private List<string> _framesPeriod = new List<string>(){
-        "."
-    };
-    private List<string> _coundown = new List<string>()
-    {
-        
-    };
+    private List<string> _framesForSpinny = new List<string>(){"|","/","-","\\"};
+    private List<string> _framesPeriod = new List<string>(){"."};
+    private List<string> _coundown = new List<string>();
+
     public void SetFPS(int frameRate)
     {
         _frameRate = frameRate;
@@ -33,8 +25,9 @@ class AnimateConsole
         _checkIfCalled = true;
         _frames = _coundown;
     }
-    public void SetFramesForSpinny()
+    public void SetFramesForSpinny(float len)
     {
+        _animationLength = len;
          _frames = _framesForSpinny;
     }
     public void SetFramesPeriod()
@@ -80,17 +73,18 @@ class AnimateConsole
                 i = 0;
             }
         }
+        _checkIfCalled = false;
     }
-    public string DisplayCommonMesg()
+    public string DisplayCommonMesg() 
     {   
-        string commonMessage = $"This activity will help you {_message}. ";
+        string commonMessage = $"This activity will help you {_message} \nHow long (in seconds) would you like to do this activity?";
         return commonMessage;
     }
 
-    public string PickingRanQuests(string[] questions)
+    public static string PickingRanQuestions(List<string> questions)
     {
         Random random = new Random();
-        int index = random.Next(questions.Length);
+        int index = random.Next(0, questions.Count);
         return questions[index];
     }
 

@@ -28,13 +28,14 @@ class Program
 
             if (userInput == "1")
             {
-                Console.WriteLine("Breathing Activity");
                 JustBreath jb = new JustBreath(10, 5, 5);
                 jb.openyourmouth();
             }
             else if (userInput == "2")
             {
                 Console.WriteLine("Reflection Activity");
+                ListActivity la = new ListActivity();
+                la.MirriorMirrorOnTheWall();
             }
             else if (userInput == "3")
             {
