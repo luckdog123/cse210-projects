@@ -34,12 +34,14 @@ class Program
             else if (userInput == "2")
             {
                 Console.WriteLine("Reflection Activity");
-                ListActivity la = new ListActivity();
-                la.MirriorMirrorOnTheWall();
+                ReflectionActivity ra = new ReflectionActivity();
+                ra.Reflect();
             }
             else if (userInput == "3")
             {
                 Console.WriteLine("List Activity");
+                ListActivity la = new ListActivity();
+                la.MirriorMirrorOnTheWall();
             }
             else if (userInput == "4")
             {

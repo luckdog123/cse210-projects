@@ -1,9 +1,11 @@
 class ListActivity : AnimateConsole
 {
     private int _answerCount = 0;
-    private string _openingLine = "reflect on the good things in your life by having you list as many things as you can in a certain area.";
+    
 
-
+    public ListActivity() : base(5, 700, "reflect on the good things in your life by having you list as many things as you can in a certain area.")
+    {
+    }
     private List<string> _prompts = new List<string>()
     {
         "Who are some of your personal heroes?",
@@ -22,11 +24,12 @@ class ListActivity : AnimateConsole
         DateTime end = start.AddSeconds(activityduration);
         while (DateTime.Now <= end)
         {
-            Console.WriteLine(_openingLine);
-            Thread.Sleep(3000);
+            Console.Clear();
+            Thread.Sleep(1000);
             Console.WriteLine("Here is your prompt:");
             Console.WriteLine(PickingRanQuestions(_prompts));
             Console.WriteLine("Get ready to start!And remeber to hit enter after each answer.");
+            // SetFPS(700);
             SetFramesForSpinny(5);
             Animate();
             

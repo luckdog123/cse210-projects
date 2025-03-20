@@ -28,7 +28,7 @@ class AnimateConsole
     public void SetFramesForSpinny(float len)
     {
         _animationLength = len;
-         _frames = _framesForSpinny;
+        _frames = _framesForSpinny;
     }
     public void SetFramesPeriod()
     {
