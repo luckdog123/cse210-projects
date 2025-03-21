@@ -20,6 +20,8 @@ class Program
         string userInput = "";
         while (userInput != "4")
         {
+            Console.Clear();
+            Console.WriteLine("Main Menu");
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Reflection Activity");
             Console.WriteLine("3. List Activity");
@@ -35,7 +37,7 @@ class Program
             {
                 Console.WriteLine("Reflection Activity");
                 ReflectionActivity ra = new ReflectionActivity();
-                ra.Reflect();
+                ra.dastuff();
             }
             else if (userInput == "3")
             {
