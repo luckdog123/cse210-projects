@@ -43,8 +43,11 @@ class ListActivity : AnimateConsole
         SetFramesForSpinny(3);  
         Animate();
         Console.Clear();
+        Console.WriteLine("Press enter to return to the main menu.");
+        Console.ReadLine();
+        Console.Clear();
     }
-
+        
 
     // public ListActivity(string argument1, int argument2) : base(argument1, argument2)
     // {
