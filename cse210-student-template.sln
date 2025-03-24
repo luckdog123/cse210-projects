@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandbox", "sandbox\Sandbox\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonProg", "PersonProg\PersonProg.csproj", "{D9D76D17-979C-4D9A-9557-DB4545A1EE92}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Final Project Kill zombies", "Final Project Kill zombies\Final Project Kill zombies.csproj", "{72490125-63C1-4B4A-9CD2-8C6C24EF5C41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +141,10 @@ Global
 		{D9D76D17-979C-4D9A-9557-DB4545A1EE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9D76D17-979C-4D9A-9557-DB4545A1EE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9D76D17-979C-4D9A-9557-DB4545A1EE92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72490125-63C1-4B4A-9CD2-8C6C24EF5C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72490125-63C1-4B4A-9CD2-8C6C24EF5C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72490125-63C1-4B4A-9CD2-8C6C24EF5C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72490125-63C1-4B4A-9CD2-8C6C24EF5C41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
