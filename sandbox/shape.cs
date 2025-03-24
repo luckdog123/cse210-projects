@@ -1,7 +1,5 @@
 class Shape
 {
-    public virtual getArea()
-    {
-        return area;
-    }
+    public abstract double getArea();
+    
 }

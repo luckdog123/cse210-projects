@@ -7,8 +7,12 @@ class TimeLord : Person
         _companions = companions;
     }
     
-    public string DisplayDrWhoInfo()
+    public override String GetName()
     {
-        return $"{DisplayPersonInfo()}\n Current Companions: {_companions}";
+        return $"{base.GetName()}\n Current Companions: {_companions}";
+    }
+    public override string GetHobbies()
+    {
+        return "Time Traveling";
     }
 }

@@ -8,9 +8,17 @@ class PoliceMan : Person
         _Height = 88;
     }
     
-    public string DisplayPoliceManInfo()
+    public string GetPoliceManInfo()
     {
-        return $"{DisplayPersonInfo()}\n Wepons: {_wepons}";
+        return $"{GetPersonInfo()}\n Wepons: {_wepons}";
+    }
+    public override string GetName()
+    {
+        return $"Captain {base.GetName()}";
+    }
+    public override string GetHobbies()
+    {
+        return "diggging holes";
     }
 }
         
