@@ -11,13 +11,24 @@ class Program
         // Console.WriteLine(pm1.DisplayPoliceManInfo());
         
         TimeLord dr1 = new TimeLord("Rory", "Dr", "Who", 1000);
-        Console.WriteLine(dr1.GetName());
-        Console.WriteLine(dr1.GetHobbies());
+        // Console.WriteLine(dr1.GetName());
+        // Console.WriteLine(dr1.GetHobbies());
 
 
-        pm1.SetHeight(76);
-        Console.WriteLine(pm1.GetName());
-        Console.WriteLine(pm1.GetHobbies());
+
+        // pm1.SetHeight(76);
+        // Console.WriteLine(pm1.GetName());
+        // Console.WriteLine(pm1.GetHobbies());
+                                                
+        List<Person> myPeople = new List<Person>();
+        myPeople.Add(dr1);
+        myPeople.Add(pm1);
+        foreach(Person person in myPeople)
+        {
+
+            Console.WriteLine($"{person.GetName()}");
+            Console.WriteLine($"{person.GetHobbies()}");
+        }
     }
 }
 

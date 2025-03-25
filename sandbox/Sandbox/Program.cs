@@ -19,4 +19,4 @@ class Program
               Console.WriteLine($"The area of the {s.whatColor()} {s.GetType()} is {s.getArea()}.");
          }
     }
-}
+} 

@@ -23,5 +23,5 @@ class Triangle : Shape
     {
         return "triangle";
     }
-    
+     
  }
