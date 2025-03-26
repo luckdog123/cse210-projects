@@ -23,7 +23,7 @@ class Entry
      public void SetUserEntry(string userEntry)
     {
         UserEntry = userEntry;
-    }
+    }    
     public void savePromptEntry(string prompt)
     {
         DaPrompt = prompt;
