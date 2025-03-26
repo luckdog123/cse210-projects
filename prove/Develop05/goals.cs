@@ -1,3 +1,7 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+
 class Goal
 {
     public virtual string makeAgoal()
@@ -10,12 +14,17 @@ class Goal
         int points = int.Parse(Console.ReadLine());
         return $"{goaltitle}#{desrciption}#{points}";
     }
-    public virtual string writetofile()
+    public virtual void writetofile(List<string> thebits, string filePath)
     {
-        return $"stuff";
+        foreach (string bit in thebits)
+        {
+            System.IO.File.AppendAllText(filePath ,bit);
+        }
+
     }
-    public virtual string readfromfile()
+    public virtual string readfromfile(string filePath)
     {
-        return $"stuff";
+        string textFromFile = System.IO.File.ReadAllText(filePath);
+        return te;
     }
 } 

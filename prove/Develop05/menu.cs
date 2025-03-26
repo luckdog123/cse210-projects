@@ -4,7 +4,7 @@ class Menu
     public static void MenuStuffAndThings()
     {
         int userinput = 33;
-
+        List<string> goalsToBeSaved = new List<string>{};  
         while (userinput != 6)
         {
             Console.Clear();
@@ -23,18 +23,17 @@ class Menu
                         case 1:
                             var basicgoal = new Goal();
                             Console.Clear();
-                            string tempvar = $"0#{basicgoal.makeAgoal()}#0";
-                            // Console.ReadLine();
+                            goalsToBeSaved.Add($"0#{basicgoal.makeAgoal()}#0");
                             break;
                         case 2:
                             var eternal = new Eternalgoal();
                             Console.Clear();
-                            eternal.makeAgoal();
+                            goalsToBeSaved.Add(eternal.makeAgoal());
                             break;
                         case 3:
                             var checklists = new ChecklistGoals();
                             Console.Clear();
-                            checklists.makeAgoal();
+                            goalsToBeSaved.Add(checklists.makeAgoal());
                             break;
                         default:
                             Console.WriteLine("\nInvalid input. Please enter a number between 1 and 6.");
