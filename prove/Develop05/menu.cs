@@ -23,7 +23,8 @@ class Menu
                         case 1:
                             var basicgoal = new Goal();
                             Console.Clear();
-                            basicgoal.makeAgoal();
+                            string tempvar = $"0#{basicgoal.makeAgoal()}#0";
+                            // Console.ReadLine();
                             break;
                         case 2:
                             var eternal = new Eternalgoal();
