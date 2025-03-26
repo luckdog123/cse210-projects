@@ -1,20 +1,46 @@
 
 class Menu
 {
-    public static void menuStuffAndThings()
+    public static void MenuStuffAndThings()
     {
         int userinput = 33;
 
         while (userinput != 6)
         {
-            // Console.Clear();
-            Console.WriteLine("1.\n2.\n3.\n4.\n5.\n6. Quit :(");
+            Console.Clear();
+            Console.WriteLine("1. Make a new goal\n2. List Goals\n3. Save Goals\n4. Load Goals\n5. Record Event\n6. Quit :(");
             userinput = int.Parse(Console.ReadLine());
 
             switch (userinput)
             {
                 case 1:
-                    Console.WriteLine("1");
+                    Console.Clear();
+                    Console.WriteLine("1. Make a basic goal\n2. Make a eternal goal\n3. Make a checklist goal");
+                    userinput = int.Parse(Console.ReadLine());
+
+                    switch (userinput)
+                    {
+                        case 1:
+                            var basicgoal = new Goal();
+                            Console.Clear();
+                            basicgoal.makeAgoal();
+                            break;
+                        case 2:
+                            var eternal = new Eternalgoal();
+                            Console.Clear();
+                            eternal.makeAgoal();
+                            break;
+                        case 3:
+                            var checklists = new ChecklistGoals();
+                            Console.Clear();
+                            checklists.makeAgoal();
+                            break;
+                        default:
+                            Console.WriteLine("\nInvalid input. Please enter a number between 1 and 6.");
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadLine();
+                            break;
+                    }
                     break;
                 case 2:
                     Console.WriteLine("2");
@@ -29,7 +55,7 @@ class Menu
                     Console.WriteLine("5");
                     break;
                  case 6:
-                        Console.WriteLine("\nExiting the application. Goodbye!");
+                        Console.WriteLine("\nGoodbye!");
                         break;
                 default:
                     Console.WriteLine("\nInvalid input. Please enter a number between 1 and 6.");
@@ -37,9 +63,6 @@ class Menu
                     Console.ReadLine();
                     break;
             }
-                
-
         }
-
     }
 } 
