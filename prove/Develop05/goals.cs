@@ -4,6 +4,20 @@ using System.Collections.Generic;
 
 class Goal
 {
+    private int _points = 0;
+    private string _goaltitle = "";
+    private string _goalDesription = "";
+    // private string _
+    public Goal(int points, string goaltitle , string goalDesription)
+    {
+        _points = points;
+        _goaltitle = goaltitle; 
+        _goalDesription = goalDesription;
+    }
+    public Goal()
+    {
+        // Empty constructor
+    }
     public virtual string makeAgoal()
     {
         Console.WriteLine("What is the name of your goal?");
@@ -22,14 +36,14 @@ class Goal
             System.IO.File.AppendAllText(filePath ,bit);
         }
     }
-    public virtual string readfromfile(string filePath)
-    {
-        foreach (string line in File.ReadLines(filePath))
-            {
-                Console.WriteLine(line);
-                // Process the current line here
-            }
-        string textFromFile = System.IO.File.ReadAllText(filePath);
-        return textFromFile;
-    }
+    // public virtual string readfromfile(string filePath)
+    // {
+    //     foreach (string line in File.ReadLines(filePath))
+    //         {
+    //             Console.WriteLine(line);
+    //             // Process the current line here
+    //         }
+    //     string textFromFile = System.IO.File.ReadAllText(filePath);
+    //     return textFromFile;
+    // }
 } 

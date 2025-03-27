@@ -49,8 +49,37 @@ class Menu
                     Console.WriteLine("3");
                     break;
                 case 4:
-                    Console.WriteLine("4");
+                    List<Goal> processedFood = new List<Goal>();
+                    List<string> unProcessedFood = new List<string>();
+
+                    Console.WriteLine("Load goals");
+                    Goal stuff = new Goal();
+                    Console.WriteLine("What file are we reading your goals from?");
+                    foreach (string line in File.ReadLines(Console.ReadLine()))
+                    {
+                        unProcessedFood.Add(line);
+                    }
+                    foreach(string goalline in unProcessedFood)
+                    {
+                        foreach(char i in goalline)
+                        {
+                            if(i == 0)
+                            {
+
+                            }
+                            else if(i == 1)
+                            {
+
+                            }
+                            else if(i == 2)
+                            {
+
+                            }
+                            break;
+                        }
+                    }
                     break;
+
                 case 5:
                     Console.WriteLine("5");
                     break;
