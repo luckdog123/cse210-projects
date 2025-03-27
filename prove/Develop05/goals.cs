@@ -25,6 +25,6 @@ class Goal
     public virtual string readfromfile(string filePath)
     {
         string textFromFile = System.IO.File.ReadAllText(filePath);
-        return te;
+        return textFromFile;
     }
 } 
