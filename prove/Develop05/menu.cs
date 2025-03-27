@@ -23,7 +23,7 @@ class Menu
                         case 1:
                             var basicgoal = new Goal();
                             Console.Clear();
-                            goalsToBeSaved.Add($"0#{basicgoal.makeAgoal()}#0");
+                            goalsToBeSaved.Add($"#0#{basicgoal.makeAgoal()}#0");
                             break;
                         case 2:
                             var eternal = new Eternalgoal();
@@ -46,14 +46,15 @@ class Menu
                     Console.WriteLine("2");
                     break;
                 case 3:
-                    Console.WriteLine("3");
+                    Console.WriteLine("What file are we saveing the goals to?");
+                    Goal.writetofile(goalsToBeSaved , Console.ReadLine());
                     break;
                 case 4:
                     List<Goal> processedFood = new List<Goal>();
                     List<string> unProcessedFood = new List<string>();
 
                     Console.WriteLine("Load goals");
-                    Goal stuff = new Goal();
+                    
                     Console.WriteLine("What file are we reading your goals from?");
                     foreach (string line in File.ReadLines(Console.ReadLine()))
                     {
@@ -65,15 +66,18 @@ class Menu
                         {
                             if(i == 0)
                             {
-
+                                Goal stuff = new Goal();
+                                processedFood.Add(stuff.foodProcessing(goalline));
                             }
                             else if(i == 1)
                             {
-
+                                Eternalgoal eternalgoal = new Eternalgoal();
+                                processedFood.Add(eternalgoal.foodProcessing(goalline));
                             }
                             else if(i == 2)
                             {
-
+                                ChecklistGoals checklistGoals = new ChecklistGoals();
+                                processedFood.Add(checklistGoals.foodProcessing(goalline));
                             }
                             break;
                         }

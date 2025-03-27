@@ -26,9 +26,9 @@ class Goal
         string desrciption = Console.ReadLine();
         Console.WriteLine("How many points is your goal worth?");
         int points = int.Parse(Console.ReadLine());
-        return $"{goaltitle}#{desrciption}#{points}";
+        return $"{goaltitle}#{desrciption}#{points}#0";
     }
-    public virtual void writetofile(List<string> thebits, string filePath)
+    public static void writetofile(List<string> thebits, string filePath)
     {
         System.IO.File.WriteAllText(filePath , "\b");   
         foreach (string bit in thebits)
@@ -36,14 +36,14 @@ class Goal
             System.IO.File.AppendAllText(filePath ,bit);
         }
     }
-    // public virtual string readfromfile(string filePath)
-    // {
-    //     foreach (string line in File.ReadLines(filePath))
-    //         {
-    //             Console.WriteLine(line);
-    //             // Process the current line here
-    //         }
-    //     string textFromFile = System.IO.File.ReadAllText(filePath);
-    //     return textFromFile;
-    // }
+    public virtual Goal foodProcessing(string food)
+    {
+        
+        
+        string[] halfcooked = food.Split("#");
+        string Goaltitle = halfcooked[1];
+        string Desrciption = halfcooked[2];
+        int Points = int.Parse(halfcooked[3]);
+        return new Goal(Points ,Desrciption , Goaltitle);
+    }
 } 
