@@ -21,7 +21,8 @@ class Program
 
       List<int> numbers = [1,2,3,4,5,6,7,8,9,10];
       List<int> evenNumbers = numbers.Where((x) => x % 2 == 0).ToList();
-      foreach (int x in evenNumbers){
+      foreach (int x in evenNumbers)
+      {
         Console.WriteLine(x);
       }
       // watch a video on how to use link or lambda functions!!!

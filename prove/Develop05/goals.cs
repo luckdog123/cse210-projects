@@ -16,14 +16,19 @@ class Goal
     }
     public virtual void writetofile(List<string> thebits, string filePath)
     {
+        System.IO.File.WriteAllText(filePath , "\b");   
         foreach (string bit in thebits)
         {
             System.IO.File.AppendAllText(filePath ,bit);
         }
-
     }
     public virtual string readfromfile(string filePath)
     {
+        foreach (string line in File.ReadLines(filePath))
+            {
+                Console.WriteLine(line);
+                // Process the current line here
+            }
         string textFromFile = System.IO.File.ReadAllText(filePath);
         return textFromFile;
     }
