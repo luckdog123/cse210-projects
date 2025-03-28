@@ -10,7 +10,7 @@ class Menu
             Console.Clear();
             Console.WriteLine("1. Make a new goal\n2. List Goals\n3. Save Goals\n4. Load Goals\n5. Record Event\n6. Quit :(");
             userinput = int.Parse(Console.ReadLine());
-
+            // string commonFileName = ""; add this feature in at the end for convience for the user and to get 100%
             switch (userinput)
             {
                 case 1:
@@ -23,7 +23,7 @@ class Menu
                         case 1:
                             var basicgoal = new Goal();
                             Console.Clear();
-                            goalsToBeSaved.Add($"#0#{basicgoal.makeAgoal()}#0");
+                            goalsToBeSaved.Add($"0#{basicgoal.makeAgoal()}#0");
                             break;
                         case 2:
                             var eternal = new Eternalgoal();
@@ -50,40 +50,14 @@ class Menu
                     Goal.writetofile(goalsToBeSaved , Console.ReadLine());
                     break;
                 case 4:
-                    List<Goal> processedFood = new List<Goal>();
-                    List<string> unProcessedFood = new List<string>();
-
-                    Console.WriteLine("Load goals");
-                    
-                    Console.WriteLine("What file are we reading your goals from?");
-                    foreach (string line in File.ReadLines(Console.ReadLine()))
+                    Console.WriteLine("What file are Loading your goals from?");
+                    List<Goal> emotionalgrowth = Goal.theFactory(Console.ReadLine());
+                    foreach(Goal goal in emotionalgrowth)
                     {
-                        unProcessedFood.Add(line);
-                    }
-                    foreach(string goalline in unProcessedFood)
-                    {
-                        foreach(char i in goalline)
-                        {
-                            if(i == 0)
-                            {
-                                Goal stuff = new Goal();
-                                processedFood.Add(stuff.foodProcessing(goalline));
-                            }
-                            else if(i == 1)
-                            {
-                                Eternalgoal eternalgoal = new Eternalgoal();
-                                processedFood.Add(eternalgoal.foodProcessing(goalline));
-                            }
-                            else if(i == 2)
-                            {
-                                ChecklistGoals checklistGoals = new ChecklistGoals();
-                                processedFood.Add(checklistGoals.foodProcessing(goalline));
-                            }
-                            break;
-                        }
+                        Goal goal1 = new Goal();
+                        goal1.DisplayGoals(goal);
                     }
                     break;
-
                 case 5:
                     Console.WriteLine("5");
                     break;

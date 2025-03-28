@@ -3,6 +3,14 @@ class Eternalgoal : Goal
     private int _points = 0;
     private string _goaltitle = "";
     private string _goalDesription = "";
+    // constuctors made by chat
+    public Eternalgoal(int points) : this(points, "", "") {}
+
+    public Eternalgoal(string goaltitle) : this(0, goaltitle, "") {}
+
+    public Eternalgoal(string goaltitle, string goalDescription) : this(0, goaltitle, goalDescription) {}
+
+    public Eternalgoal(int points, string goaltitle) : this(points, goaltitle, "" ) {}
     public override string makeAgoal()
     {
         string fristhalf = base.makeAgoal();
@@ -21,6 +29,6 @@ class Eternalgoal : Goal
         string Goaltitle = halfcooked[1];
         string Desrciption = halfcooked[2];
         int Points = int.Parse(halfcooked[3]);
-        return new Eternalgoal(Points , Goaltitle, Desrciption);
+        return new Eternalgoal(Points , Goaltitle, Desrciption );
     }
 }
