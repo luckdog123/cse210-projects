@@ -7,7 +7,7 @@ class Menu
         List<string> goalsToBeSaved = new List<string>{};  
         while (userinput != 6)
         {
-            Console.Clear();
+            // Console.Clear();
             Console.WriteLine("1. Make a new goal\n2. List Goals\n3. Save Goals\n4. Load Goals\n5. Record Event\n6. Quit :(");
             userinput = int.Parse(Console.ReadLine());
             // string commonFileName = ""; add this feature in at the end for convience for the user and to get 100%

@@ -18,6 +18,7 @@ class Goal
      
 
     }
+
     public Goal(int points, string goaltitle , string goalDesription, bool done)
     {
         _points = points;
@@ -26,10 +27,26 @@ class Goal
         _done = done;
 
     }
+
     public Goal()
     {
         // Empty constructor
     }
+
+    public virtual void DisplayGoals(Goal goal, bool arewedone=false)
+    {
+        string x = "";
+        if(arewedone == true || _done == true)
+        {
+            x = "X";
+        }
+        else
+        {
+            x = " ";
+        }
+        Console.WriteLine($"[{x}]  Goal Title: {_goaltitle} Goal Description: {_goalDesription} How many point when finished: {_points}");
+    }
+
     public virtual string makeAgoal()
     {
         Console.WriteLine("What is the name of your goal?");
@@ -82,36 +99,31 @@ class Goal
             }
             foreach(string goalline in unProcessedFood)
             {
-                foreach(char i in goalline)
-                {
-                    if(i == 0)
+                string[] whatsHappening = goalline.Split("#");
+                int imsickofcomingupwithnewnamesforthings = int.Parse(whatsHappening[0]);
+                
+                    if(imsickofcomingupwithnewnamesforthings == 0)
                     {
                         Goal stuff = new Goal();
                         processedFood.Add(stuff.foodProcessing(goalline));
                     }
-                    else if(i == 1)
+                    else if(imsickofcomingupwithnewnamesforthings == 1)
                     {
                         Eternalgoal eternalgoal = new Eternalgoal();
                         processedFood.Add(eternalgoal.foodProcessing(goalline));
                     }
-                    else if(i == 2)
+                    else if(imsickofcomingupwithnewnamesforthings == 2)
                     {
                         ChecklistGoals checklistGoals = new ChecklistGoals();
                         processedFood.Add(checklistGoals.foodProcessing(goalline));
                     }
                     break;
-        
-                }
-
             }
             return processedFood;
     }
 
 
-    public virtual void DisplayGoals(Goal goal, bool arewedone=false)
-    {
-
-    }
+    
 
 
     
