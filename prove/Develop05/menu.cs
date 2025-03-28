@@ -34,6 +34,7 @@ class Menu
                             var checklists = new ChecklistGoals();
                             Console.Clear();
                             goalsToBeSaved.Add(checklists.makeAgoal());
+                            
                             break;
                         default:
                             Console.WriteLine("\nInvalid input. Please enter a number between 1 and 6.");

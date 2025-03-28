@@ -119,10 +119,4 @@ class Goal
             }
             return processedFood;
     }
-
-
-    
-
-
-    
 }
