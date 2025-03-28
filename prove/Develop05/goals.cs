@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 class Goal
 {
-    private int _points = 0;
+    private int _points;
     private string _goaltitle = "";
     private string _goalDesription = "";
     private bool _done;
@@ -68,8 +68,6 @@ class Goal
     // public virtual bool GetDone(){return _done;}
     public virtual Goal foodProcessing(string food)
     {
-        
-        
         string[] halfcooked = food.Split("#");
         string Goaltitle = halfcooked[1];
         string Desrciption = halfcooked[2];
