@@ -72,15 +72,15 @@ class Goal
         string Goaltitle = halfcooked[1];
         string Desrciption = halfcooked[2];
         int Points = int.Parse(halfcooked[3]);
-        bool done;
-        if (halfcooked[4] == "0")
-        {
-            done = false;
-        }
-        else
-        {
-            done = true;
-        }
+        // bool done;
+        // if (halfcooked[4] == "0")
+        // {
+        //     done = false;
+        // }
+        // else
+        // {
+        //     done = true;
+        // }
         return new Goal(Points ,Desrciption , Goaltitle);
     }
     public static List<Goal> theFactory(string filename)
@@ -90,6 +90,9 @@ class Goal
             if (File.Exists(filename))
             {
                 unProcessedFood.AddRange(File.ReadLines(filename));
+                // foreach(string agoal in unProcessedFood){
+                //     Console.WriteLine(agoal);
+                // }
             }
             else
             {
@@ -98,6 +101,9 @@ class Goal
             foreach(string goalline in unProcessedFood)
             {
                 string[] whatsHappening = goalline.Split("#");
+                foreach(string thing in whatsHappening){
+                    Console.WriteLine(thing);
+                }
                 int imsickofcomingupwithnewnamesforthings = int.Parse(whatsHappening[0]);
                 
                     if(imsickofcomingupwithnewnamesforthings == 0)

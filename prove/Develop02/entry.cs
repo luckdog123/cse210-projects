@@ -1,7 +1,7 @@
 using System;
 
 class Entry
-{
+{ 
     private string UserEntry;
     private string DaPrompt;
     private string DidYouWorkOut;

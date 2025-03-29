@@ -55,8 +55,8 @@ class Menu
                     List<Goal> emotionalgrowth = Goal.theFactory(Console.ReadLine());
                     foreach(Goal goal in emotionalgrowth)
                     {
-                        Goal goal1 = new Goal();
-                        goal1.DisplayGoals(goal);
+                        // Goal goal1 = new Goal();
+                        goal.DisplayGoals(goal);
                     }
                     break;
                 case 5:
