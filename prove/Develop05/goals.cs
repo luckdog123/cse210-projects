@@ -8,24 +8,20 @@ class Goal
     private string _goaltitle = "";
     private string _goalDesription = "";
     private bool _done;
-    
-    // private string _
-    public Goal(int points, string goaltitle , string goalDesription)
+
+    public Goal(int points, string goaltitle, string goalDesription)
     {
         _points = points;
-        _goaltitle = goaltitle; 
+        _goaltitle = goaltitle;
         _goalDesription = goalDesription;
-     
-
     }
 
-    public Goal(int points, string goaltitle , string goalDesription, bool done)
+    public Goal(int points, string goaltitle, string goalDesription, bool done)
     {
         _points = points;
-        _goaltitle = goaltitle; 
+        _goaltitle = goaltitle;
         _goalDesription = goalDesription;
         _done = done;
-
     }
 
     public Goal()
@@ -33,96 +29,139 @@ class Goal
         // Empty constructor
     }
 
-    public virtual void DisplayGoals(Goal goal, bool arewedone=false)
+    public virtual void DisplayGoals(Goal goal, bool arewedone = false)
     {
-        string x = "";
-        if(arewedone == true || _done == true)
-        {
-            x = "X";
-        }
-        else
-        {
-            x = " ";
-        }
-        Console.WriteLine($"[{x}]  Goal Title: {_goaltitle} Goal Description: {_goalDesription} How many point when finished: {_points}");
+        string x = arewedone || _done ? "X" : " ";
+        Console.WriteLine($"[{x}]  Goal Title: {_goaltitle} Goal Description: {_goalDesription} How many points when finished: {_points}");
     }
 
     public virtual string makeAgoal()
     {
         Console.WriteLine("What is the name of your goal?");
         string goaltitle = Console.ReadLine();
-        Console.WriteLine("What is a short discription of your goal?");
-        string desrciption = Console.ReadLine();
+        Console.WriteLine("What is a short description of your goal?");
+        string description = Console.ReadLine();
         Console.WriteLine("How many points is your goal worth?");
         int points = int.Parse(Console.ReadLine());
-        return $"{goaltitle}#{desrciption}#{points}#0";
+        return $"{goaltitle}#{description}#{points}#0";
     }
+    private string makeAbasicGoal()
+    {
+        int done = 0;
+        if(_done == true){
+            done = 1;
+        }
+
+        return $"{_goaltitle}#{_goalDesription}#{_points}#{done}";
+    }
+
     public static void writetofile(List<string> thebits, string filePath)
     {
-        System.IO.File.WriteAllText(filePath , "");   
-        foreach (string bit in thebits)
+        using (StreamWriter writer = new StreamWriter(filePath))
         {
-            System.IO.File.AppendAllText(filePath ,bit);
+            foreach (string bit in thebits)
+            {
+                writer.WriteLine(bit);
+            }
         }
     }
-    // public virtual bool GetDone(){return _done;}
+
     public virtual Goal foodProcessing(string food)
     {
         string[] halfcooked = food.Split("#");
         string Goaltitle = halfcooked[1];
         string Desrciption = halfcooked[2];
         int Points = int.Parse(halfcooked[3]);
-        // bool done;
-        // if (halfcooked[4] == "0")
-        // {
-        //     done = false;
-        // }
-        // else
-        // {
-        //     done = true;
-        // }
-        return new Goal(Points ,Desrciption , Goaltitle);
+        return new Goal(Points, Desrciption, Goaltitle);
     }
+
+    public bool IsDone()
+    {
+        return _done;
+    }
+
+    public void MarkAsDone()
+    {
+        _done = true;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
+
+    public string GetGoalTitle()
+    {
+        return _goaltitle;
+    }
+
+    public string GetGoalDescription()
+    {
+        return _goalDesription;
+    }
+
     public static List<Goal> theFactory(string filename)
     {
         List<Goal> processedFood = new List<Goal>();
         List<string> unProcessedFood = new List<string>();
-            if (File.Exists(filename))
+
+        if (File.Exists(filename))
+        {
+            unProcessedFood.AddRange(File.ReadLines(filename));
+        }
+        else
+        {
+            Console.WriteLine($"Error: The file '{filename}' does not exist.");
+        }
+
+        foreach (string goalline in unProcessedFood)
+        {
+            string[] whatsHappening = goalline.Split("#");
+
+            // foreach (string thing in whatsHappening)
+            // {
+            //     Console.WriteLine(thing);
+            // }
+
+            int imsickofcomingupwithnewnamesforthings = int.Parse(whatsHappening[0]);
+
+            if (imsickofcomingupwithnewnamesforthings == 0)
             {
-                unProcessedFood.AddRange(File.ReadLines(filename));
-                // foreach(string agoal in unProcessedFood){
-                //     Console.WriteLine(agoal);
-                // }
+                Goal stuff = new Goal();
+                processedFood.Add(stuff.foodProcessing(goalline));
             }
-            else
+            else if (imsickofcomingupwithnewnamesforthings == 1)
             {
-                Console.WriteLine($"Error: The file '{filename}' does not exist.");
+                Eternalgoal eternalgoal = new Eternalgoal();
+                processedFood.Add(eternalgoal.foodProcessing(goalline));
             }
-            foreach(string goalline in unProcessedFood)
+            else if (imsickofcomingupwithnewnamesforthings == 2)
             {
-                string[] whatsHappening = goalline.Split("#");
-                foreach(string thing in whatsHappening){
-                    Console.WriteLine(thing);
-                }
-                int imsickofcomingupwithnewnamesforthings = int.Parse(whatsHappening[0]);
-                
-                    if(imsickofcomingupwithnewnamesforthings == 0)
-                    {
-                        Goal stuff = new Goal();
-                        processedFood.Add(stuff.foodProcessing(goalline));
-                    }
-                    else if(imsickofcomingupwithnewnamesforthings == 1)
-                    {
-                        Eternalgoal eternalgoal = new Eternalgoal();
-                        processedFood.Add(eternalgoal.foodProcessing(goalline));
-                    }
-                    else if(imsickofcomingupwithnewnamesforthings == 2)
-                    {
-                        ChecklistGoals checklistGoals = new ChecklistGoals();
-                        processedFood.Add(checklistGoals.foodProcessing(goalline));
-                    }
-                    break;
+                ChecklistGoals checklistGoals = new ChecklistGoals();
+                processedFood.Add(checklistGoals.foodProcessing(goalline));
             }
-            return processedFood;
+        }
+
+        return processedFood;
     }
+
+    protected virtual string turnToString()
+    {
+
+        return $"{makeAbasicGoal()}";
+    }
+    public static List<string> goalToStrings(List<Goal> goals)
+    {
+        List<string> goalStrings = new List<string>();
+        foreach (Goal smallGoal in goals){
+            string stuff = smallGoal.turnToString();
+            goalStrings.Add(stuff);
+        }
+
+
+        return goalStrings;
+    }
+
+
+
 }

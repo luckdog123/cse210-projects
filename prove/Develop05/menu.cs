@@ -48,12 +48,16 @@ class Menu
                     break;
                 case 3:
                     Console.WriteLine("What file are we saveing the goals to?");
-                    Goal.writetofile(goalsToBeSaved , Console.ReadLine());
+                    string userfile = Console.ReadLine();
+                    List<string> emotionalgrowth = Goal.goalToStrings(Goal.theFactory(userfile));
+                    goalsToBeSaved.AddRange(emotionalgrowth);
+                    Goal.writetofile(goalsToBeSaved , userfile);
+                    
                     break;
                 case 4:
                     Console.WriteLine("What file are Loading your goals from?");
-                    List<Goal> emotionalgrowth = Goal.theFactory(Console.ReadLine());
-                    foreach(Goal goal in emotionalgrowth)
+                    List<Goal> goodluckcharlieborwn = Goal.theFactory(Console.ReadLine());
+                    foreach(Goal goal in goodluckcharlieborwn)
                     {
                         // Goal goal1 = new Goal();
                         goal.DisplayGoals(goal);

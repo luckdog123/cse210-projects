@@ -1,5 +1,31 @@
 class ChecklistGoals : Goal
 {
+    private string _goalTitle;
+    private string _description;
+    private int _currentProgress;
+    private int _targetAmount;
+    private int _smallPoints;
+    private int _bigPoints;
+
+    public ChecklistGoals(string goalTitle, string description, int targetAmount, int smallPoints, int bigPoints, int currentProgress)
+    {
+        _goalTitle = goalTitle;
+        _description = description;
+        _currentProgress = currentProgress; // Initialize progress to 0
+        _targetAmount = targetAmount;
+        _smallPoints = smallPoints;
+        _bigPoints = bigPoints;
+    }
+
+    public ChecklistGoals()
+    {
+        _goalTitle = "";
+        _description = "";
+        _currentProgress = 0;
+        _targetAmount = 0;
+        _smallPoints = 0;
+        _bigPoints = 0;
+    }
     public override string makeAgoal()
     {
         Console.WriteLine("What is the name of your goal?");
