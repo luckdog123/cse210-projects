@@ -6,8 +6,9 @@ class ChecklistGoals : Goal
     private int _targetAmount;
     private int _smallPoints;
     private int _bigPoints;
+    private bool _done;
 
-    public ChecklistGoals(string goalTitle, string description, int targetAmount, int smallPoints, int bigPoints, int currentProgress)
+    public ChecklistGoals(string goalTitle, string description, int targetAmount, int smallPoints, int bigPoints, int currentProgress, bool done)
     {
         _goalTitle = goalTitle;
         _description = description;
@@ -15,6 +16,7 @@ class ChecklistGoals : Goal
         _targetAmount = targetAmount;
         _smallPoints = smallPoints;
         _bigPoints = bigPoints;
+        _done = done;
     }
 
     public ChecklistGoals()
@@ -25,7 +27,9 @@ class ChecklistGoals : Goal
         _targetAmount = 0;
         _smallPoints = 0;
         _bigPoints = 0;
+        _done = false;
     }
+
     public override string makeAgoal()
     {
         Console.WriteLine("What is the name of your goal?");
@@ -39,5 +43,25 @@ class ChecklistGoals : Goal
         Console.WriteLine("How many points should you get when you finish your goal?");
         int bigpoints = Console.Read();
         return $"2#{goaltitle}#{desrciption}#0#{amount}#{smallpoints}#{bigpoints}";
+    }
+
+    private string makeAnChecklistlGoal()
+    {
+        // int done = _done ? 1 : 0; this line is the same as the if else statment below
+        int done;
+        if (_done)
+        {
+            done = 1;
+        }
+        else
+        {
+            done = 0;
+        }
+        return $"2#{_goalTitle}#{_description}#{_currentProgress}#{_targetAmount}#{_smallPoints}#{_bigPoints}#{done}";
+    }
+
+    protected override string turnToString()
+    {
+        return $"{makeAnChecklistlGoal()}";
     }
 } 

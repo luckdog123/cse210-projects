@@ -29,12 +29,18 @@ class Goal
         // Empty constructor
     }
 
-    public virtual void DisplayGoals(Goal goal, bool arewedone = false)
+    public virtual void DisplayGoals()
     {
-        string x = arewedone || _done ? "X" : " ";
+        string x = _done ? "X" : " "; // chat showed me a shorthand way for simple if else statments
         Console.WriteLine($"[{x}]  Goal Title: {_goaltitle} Goal Description: {_goalDesription} How many points when finished: {_points}");
     }
-
+    public static void ListGoals(List<Goal> goalsToBeDisplayed)
+    {
+        foreach(Goal goal in goalsToBeDisplayed)
+        {
+            goal.DisplayGoals();
+        }
+    }
     public virtual string makeAgoal()
     {
         Console.WriteLine("What is the name of your goal?");
@@ -52,7 +58,7 @@ class Goal
             done = 1;
         }
 
-        return $"{_goaltitle}#{_goalDesription}#{_points}#{done}";
+        return $"0#{_goaltitle}#{_goalDesription}#{_points}#{done}";
     }
 
     public static void writetofile(List<string> thebits, string filePath)
@@ -65,7 +71,7 @@ class Goal
             }
         }
     }
-
+    
     public virtual Goal foodProcessing(string food)
     {
         string[] halfcooked = food.Split("#");
@@ -113,15 +119,16 @@ class Goal
         {
             Console.WriteLine($"Error: The file '{filename}' does not exist.");
         }
+        return theFactoryPart2(unProcessedFood);
+    }
 
-        foreach (string goalline in unProcessedFood)
+    public static List<Goal> theFactoryPart2(List<string> rawFood)
+    {
+        List<Goal> processedFood = new List<Goal>();
+        // List<string> unProcessedFood = new List<string>();
+        foreach (string goalline in rawFood)
         {
             string[] whatsHappening = goalline.Split("#");
-
-            // foreach (string thing in whatsHappening)
-            // {
-            //     Console.WriteLine(thing);
-            // }
 
             int imsickofcomingupwithnewnamesforthings = int.Parse(whatsHappening[0]);
 
@@ -144,6 +151,7 @@ class Goal
 
         return processedFood;
     }
+    
 
     protected virtual string turnToString()
     {

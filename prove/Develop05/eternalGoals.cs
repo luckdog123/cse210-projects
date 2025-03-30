@@ -31,4 +31,15 @@ class Eternalgoal : Goal
         int Points = int.Parse(halfcooked[3]);
         return new Eternalgoal(Points , Goaltitle, Desrciption );
     }
+    private string makeAnEternalGoal()
+    {
+        int done = 0;
+        
+        return $"1#{_goaltitle}#{_goalDesription}#{_points}#0";
+    }
+    protected override string turnToString()
+    {
+
+        return $"{makeAnEternalGoal()}";
+    }
 }

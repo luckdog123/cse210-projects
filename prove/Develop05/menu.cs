@@ -5,6 +5,7 @@ class Menu
     {
         int userinput = 33;
         List<string> goalsToBeSaved = new List<string>{};  
+          
         while (userinput != 6)
         {
             // Console.Clear();
@@ -44,7 +45,7 @@ class Menu
                     }
                     break;
                 case 2:
-                    Console.WriteLine("2");
+                    // Goal.ListGoals(Goal.theFactory(Goal.theFactoryPart2(goalsToBeSaved)));
                     break;
                 case 3:
                     Console.WriteLine("What file are we saveing the goals to?");
@@ -59,8 +60,7 @@ class Menu
                     List<Goal> goodluckcharlieborwn = Goal.theFactory(Console.ReadLine());
                     foreach(Goal goal in goodluckcharlieborwn)
                     {
-                        // Goal goal1 = new Goal();
-                        goal.DisplayGoals(goal);
+                        goal.DisplayGoals();
                     }
                     break;
                 case 5:
