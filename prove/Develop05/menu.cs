@@ -45,7 +45,7 @@ class Menu
                     }
                     break;
                 case 2:
-                    // Goal.ListGoals(Goal.theFactory(Goal.theFactoryPart2(goalsToBeSaved)));
+                    Goal.ListGoals(Goal.theFactoryPart2(goalsToBeSaved));
                     break;
                 case 3:
                     Console.WriteLine("What file are we saveing the goals to?");

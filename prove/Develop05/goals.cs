@@ -169,7 +169,11 @@ class Goal
 
         return goalStrings;
     }
-
+    public int pointCalc()
+    {
+        
+        return 1;
+    }
 
 
 }
