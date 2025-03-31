@@ -8,6 +8,7 @@ class Goal
     private string _goaltitle = "";
     private string _goalDesription = "";
     private bool _done;
+    private int _totalPoints;
 
     public Goal(int points, string goaltitle, string goalDesription)
     {
@@ -121,6 +122,10 @@ class Goal
         }
         return theFactoryPart2(unProcessedFood);
     }
+    
+    // private void SetTotalPoints(int pooints){
+    //     _totalPoints = pooints;
+    // }
 
     public static List<Goal> theFactoryPart2(List<string> rawFood)
     {
@@ -130,32 +135,34 @@ class Goal
         {
             string[] whatsHappening = goalline.Split("#");
 
-            int imsickofcomingupwithnewnamesforthings = int.Parse(whatsHappening[0]);
+            string imsickofcomingupwithnewnamesforthings = whatsHappening[0];
+            // if (imsickofcomingupwithnewnamesforthings == "Points") this solution would require makeing another class and makeing a class for the basic goal as well.
+            // {
+            //     SetTotalPoints(int.Parse(whatsHappening[1]));
+            // }
 
-            if (imsickofcomingupwithnewnamesforthings == 0)
+            if (imsickofcomingupwithnewnamesforthings == "0")
             {
                 Goal stuff = new Goal();
                 processedFood.Add(stuff.foodProcessing(goalline));
             }
-            else if (imsickofcomingupwithnewnamesforthings == 1)
+            else if (imsickofcomingupwithnewnamesforthings == "1")
             {
                 Eternalgoal eternalgoal = new Eternalgoal();
                 processedFood.Add(eternalgoal.foodProcessing(goalline));
             }
-            else if (imsickofcomingupwithnewnamesforthings == 2)
+            else if (imsickofcomingupwithnewnamesforthings == "2")
             {
                 ChecklistGoals checklistGoals = new ChecklistGoals();
                 processedFood.Add(checklistGoals.foodProcessing(goalline));
             }
         }
-
         return processedFood;
     }
     
 
     protected virtual string turnToString()
     {
-
         return $"{makeAbasicGoal()}";
     }
     public static List<string> goalToStrings(List<Goal> goals)
@@ -165,15 +172,10 @@ class Goal
             string stuff = smallGoal.turnToString();
             goalStrings.Add(stuff);
         }
-
-
         return goalStrings;
     }
     public int pointCalc()
     {
-        
         return 1;
     }
-
-
 }
