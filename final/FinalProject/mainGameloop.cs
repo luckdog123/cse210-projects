@@ -18,7 +18,7 @@ class GameLoop
             else
             {
                 // the normal part of the game
-                if(roomType[roomType.Count - 1] == )
+                roomType.Add(DungenGen.MakeARoom((roomType[roomType.Count - 1])));
             }
             
         }
