@@ -40,18 +40,45 @@ abstract class Room
             return availableRooms[randomIndex];
 
     }
-    protected virtual void DisplayRoomChoices(int choice1 ,int c2 = 0,int c3=0)
+    protected static int DisplayRoomChoices(int c1 ,int c2 = 0,int c3=0)
     {   
-        Console.WriteLine();
+        Console.WriteLine($"Go to {c1}? ");
 
         if(c2 != 0)
         {
-            Console.WriteLine();
+            Console.WriteLine($"Go to {c2}? ");
         }
         if(c3 != 0)
         {
-            Console.WriteLine();
+            Console.WriteLine($"Go to {c3}? ");
         }
+        int choice;
+        while (true)
+        {
+            Console.Write("What do you chose? ");
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out choice)) // read more into "out" statments they are cool. Chat gave me this
+            {
+            break;
+            }
+            else
+            {
+            Console.WriteLine("That door doesn't exist try again.");
+            }
+        }
+        switch(choice){
+            case 1:
+                choice = c1;            
+                break;
+            case 2:
+                choice = c2;
+                break;
+            case 3:
+                choice = c3;
+                break;
+            
+        }
+        return choice;
     }
     
 }
