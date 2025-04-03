@@ -34,21 +34,25 @@ class Prompt
     };
     public static string RoomHints(int NextPossibleRoom)
     {
-        
+        string roomHint = "If youre reading this somthing didnt work right line 37 text prompt storage";
+        Random random = new Random();
+        int promtChoice = random.Next(1, _toRoom1.Length);
         switch(NextPossibleRoom)
         {
             case 1:
-                Random random = new Random();
-                int promtChoice = random.Next(1, _toRoom1.Length);
-                
+                roomHint =_toRoom1[promtChoice];
                 break;
             case 2:
+                roomHint =_toRoom2[promtChoice];
                 break;
             case 3:
+                roomHint =_toRoom3[promtChoice];
                 break;
             case 4:
+                roomHint =_toRoom4[promtChoice];
                 break;
             case 5:
+                roomHint =_toRoom5[promtChoice];
                 break;
         }
         return roomHint;

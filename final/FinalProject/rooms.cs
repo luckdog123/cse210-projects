@@ -82,5 +82,34 @@ abstract class Room
             
         }
         return choice;
+    }
+    public virtual int TimeToLeave(int currentRoom)
+    {
+        // room discription prompt
+        // room 
+        Random random = new Random();
+        int howMany = random.Next(1,3);
+        int playersChoice = 1;
+        switch(howMany)
+        {
+            case 1:
+                int choice1 = Room.NextRoomRandom(currentRoom);
+                playersChoice = Room.DisplayRoomChoices(choice1);
+
+                break;
+            case 2:
+                choice1 = Room.NextRoomRandom(currentRoom);
+                int choice2 = Room.NextRoomRandom(currentRoom);
+                playersChoice = Room.DisplayRoomChoices(choice1,choice2);
+                break;
+            case 3:
+                choice1 = Room.NextRoomRandom(currentRoom);
+                choice2 = Room.NextRoomRandom(currentRoom);
+                int choice3 = Room.NextRoomRandom(currentRoom);
+                playersChoice = Room.DisplayRoomChoices(choice1,choice2,choice3);
+                break;
+        }
+        
+        return playersChoice; // i need to return the players room choice
     }   
 }

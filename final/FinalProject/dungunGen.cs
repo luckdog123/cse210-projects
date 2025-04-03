@@ -40,12 +40,16 @@ class DunGen
                 selectedRoom = emptyRoom.TheresNothingHere();
                 break;
             case 2:
+                Console.WriteLine("this is the 2nd choice");
                 break;
             case 3:
+            Console.WriteLine("this is the 3rd choice");
                 break;
             case 4:
+            Console.WriteLine("this is the 4th choice");
                 break;
             case 5:
+            Console.WriteLine("this is the 5th choice");
                 break;
         }
 

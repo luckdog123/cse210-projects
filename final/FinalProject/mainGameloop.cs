@@ -13,6 +13,8 @@ class GameLoop
             
             if(roomNumber == 0){
                 // do the startin room else do the normal thing
+                StartingRoom start = new StartingRoom();
+                start.YoureFinnalyAwake();
             }
             else if (roomNumber == dunLength-1){
                 // boss fight time baby
