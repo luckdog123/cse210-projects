@@ -32,12 +32,12 @@ class DunGen
         {
             Room.NextRoomRandom(lastRoomType); 
         }
-
+        int selectedRoom = 0;
         switch(whereWeGoing)
         {
             case 1:
                 EmptyRoom emptyRoom = new EmptyRoom();
-                emptyRoom.TheresNothingHere(lastRoomType);
+                selectedRoom = emptyRoom.TheresNothingHere();
                 break;
             case 2:
                 break;
