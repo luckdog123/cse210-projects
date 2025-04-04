@@ -77,14 +77,15 @@ abstract class Room
         // room discription prompt
         // room 
         Random random = new Random();
-        int howMany = random.Next(1,3);
+        // int howMany = random.Next(1,3);
         int playersChoice = 1;
+        int[] ToDecideHowManyOptionsToGiveThePlayer = { 1, 2, 2, 2, 2, 2, 3, 3 };
+        int howMany = random.Next(ToDecideHowManyOptionsToGiveThePlayer.Length);
         switch(howMany)
         {
             case 1:
                 int choice1 = Room.NextRoomRandom(currentRoom);
                 playersChoice = Room.DisplayRoomChoices(choice1);
-
                 break;
             case 2:
                 choice1 = Room.NextRoomRandom(currentRoom);
@@ -98,7 +99,7 @@ abstract class Room
                 playersChoice = Room.DisplayRoomChoices(choice1,choice2,choice3);
                 break;
         }
-        
+
         return playersChoice; // i need to return the players room choice
     }   
 }

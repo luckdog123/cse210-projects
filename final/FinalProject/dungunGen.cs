@@ -42,23 +42,28 @@ class DunGen
         }
         else if (whereWeGoing == 2)
         {
-            Console.WriteLine("this is a combat room");
+            // Console.WriteLine("this is a combat room");
+            FightClub combatRoom = new FightClub();
+            selectedRoom = combatRoom.YoullNeedHands();
             selectedRoom = 2;
         }
         else if (whereWeGoing == 3)
         {
-            Console.WriteLine("this is a trap room");
-            selectedRoom = 3;
+            // Console.WriteLine("this is a trap room");
+            TrapRoom trapRoom = new TrapRoom();
+            selectedRoom = trapRoom.ItsATrap();
         }
         else if (whereWeGoing == 4)
         {
-            Console.WriteLine("this is a treasure room");
-            selectedRoom = 4;
+            // Console.WriteLine("this is a treasure room");
+            TreasureRoom treasureRoom = new TreasureRoom();
+            selectedRoom = treasureRoom.ChestMonster();
         }
         else if (whereWeGoing == 5)
         {
-            Console.WriteLine("this is the find a friend room");
-            selectedRoom = 5;
+            // Console.WriteLine("this is the find a friend room");
+            DogRoom dogRoom = new DogRoom();
+            selectedRoom = dogRoom.WhosAGoodBoy();
         }
 
 

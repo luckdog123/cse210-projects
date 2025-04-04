@@ -2,31 +2,31 @@ class Prompt
 {
     // this is where all the prompts and the logic for getting the prompts will be housed
 
-    private static string[] _toRoom1 = 
+    private static string[] _toRoom1 = // empty room hints 
     {
-        "1this is a hint that the next room might be empty",
-        "1this is the second",
-        "1and the third"
+        "The door is old and dusty but you can't hear anything behind it",
+        "You think you hear something slithering behind the door but your not sure",
+        "It smells like something has been rotting behind the door for a while",
     };
-    private static string[] _toRoom2 = 
+    private static string[] _toRoom2 = // combat room hints
     {
         "2this is a hint that the next room might be empty",
         "2this is the second",
         "2and the third"
     };
-    private static string[] _toRoom3 = 
+    private static string[] _toRoom3 = // trap room hints
     {
         "3this is a hint that the next room might be empty",
         "3this is the second",
         "3and the third"
     };
-    private static string[] _toRoom4 = 
+    private static string[] _toRoom4 = // treasure room hints
     {
         "4this is a hint that the next room might be empty",
         "4this is the second",
         "4and the third"
     };
-    private static string[] _toRoom5 = 
+    private static string[] _toRoom5 =  //Dog room hints
     {
         "5this is a hint that the next room might be empty",
         "5this is the second",
