@@ -56,19 +56,8 @@ abstract class Room
             Console.WriteLine($"Go to {c3}? "); //delete these lines once its working
         }
         int choice;
-        while (true)
-        {
-            Console.Write("What do you chose? ");
-            string input = Console.ReadLine();
-            if (int.TryParse(input, out choice)) // read more into "out" statments they are cool. Chat gave me this
-            {
-            break;
-            }
-            else
-            {
-            Console.WriteLine("That door doesn't exist try again.");
-            }
-        }
+    
+        choice = int.Parse(Console.ReadLine());        
         switch(choice){
             case 1:
                 choice = c1;            

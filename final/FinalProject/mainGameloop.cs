@@ -6,6 +6,7 @@ class GameLoop
         int roomNumber = 0;
         int dunLength = DunGen.RandomizeDunLength();
         List<int> roomType = new List<int>(); 
+        roomType.Add(10);
         int nextRoomChoice = 10;
         // This is what drives the whole game
         while(roomNumber <= dunLength)
@@ -15,19 +16,24 @@ class GameLoop
                 // do the startin room else do the normal thing
                 StartingRoom start = new StartingRoom();
                 start.YoureFinnalyAwake();
+                roomNumber ++;
             }
             else if (roomNumber == dunLength-1){
                 // boss fight time baby
+                roomNumber ++;
             }
             else if(roomNumber == dunLength){
                 // final room
+                roomNumber ++;
             }
             else
             {
                 // the normal part of the game
                 DunGen play = new DunGen();
-                roomType.Add(DunGen.MakeARoom((roomType[roomType.Count - 1]), nextRoomChoice));
-                nextRoomChoice = play.GetNextRoom();
+                DunGen.MakeARoom((roomType[roomType.Count - 1]), nextRoomChoice);
+                roomType.Add(nextRoomChoice);
+                // nextRoomChoice = play.GetNextRoom(); why did i do this?
+                roomNumber ++;
             }
             
         }

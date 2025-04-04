@@ -30,29 +30,36 @@ class DunGen
         }
         else
         {
-            Room.NextRoomRandom(lastRoomType); 
+            whereWeGoing = Room.NextRoomRandom(lastRoomType); 
         }
         int selectedRoom = 0;
-        switch(whereWeGoing)
+        // where we going is the room type we are going to
+        // whereWeGoing is still equaling 0 so we need to fix that
+        if (whereWeGoing == 1)
         {
-            case 1:
-                EmptyRoom emptyRoom = new EmptyRoom();
-                selectedRoom = emptyRoom.TheresNothingHere();
-                break;
-            case 2:
-                Console.WriteLine("this is the 2nd choice");
-                break;
-            case 3:
-            Console.WriteLine("this is the 3rd choice");
-                break;
-            case 4:
-            Console.WriteLine("this is the 4th choice");
-                break;
-            case 5:
-            Console.WriteLine("this is the 5th choice");
-                break;
+            EmptyRoom emptyRoom = new EmptyRoom();
+            selectedRoom = emptyRoom.TheresNothingHere();
         }
-
+        else if (whereWeGoing == 2)
+        {
+            Console.WriteLine("this is a combat room");
+            selectedRoom = 2;
+        }
+        else if (whereWeGoing == 3)
+        {
+            Console.WriteLine("this is a trap room");
+            selectedRoom = 3;
+        }
+        else if (whereWeGoing == 4)
+        {
+            Console.WriteLine("this is a treasure room");
+            selectedRoom = 4;
+        }
+        else if (whereWeGoing == 5)
+        {
+            Console.WriteLine("this is the find a friend room");
+            selectedRoom = 5;
+        }
 
 
         return selectedRoom;
