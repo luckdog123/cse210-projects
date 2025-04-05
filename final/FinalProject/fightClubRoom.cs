@@ -2,10 +2,24 @@ class FightClub : Room
 {
     public int YoullNeedHands()
     {
-        Console.WriteLine("First rule of fight club is you dont talk about fight club ");
-        Console.WriteLine("Second rule of fight club is you dont talk about fight club ");
         
         Console.ReadLine();
-        return TimeToLeave(3);
+        
+
+        BeatemUpCombat combat = new BeatemUpCombat();
+        bool combatResult = combat.StartCombat();
+        if (combatResult == true)
+        {
+            Console.WriteLine("You have won the fight club ");
+            Console.ReadLine();
+            return TimeToLeave(3);
+        }
+        else
+        {
+            Console.WriteLine("You have lost the fight club ");
+            Console.ReadLine();
+            return TimeToLeave(3);
+        }
+        // return TimeToLeave(3);
     }    
 }

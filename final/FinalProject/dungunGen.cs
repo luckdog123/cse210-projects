@@ -1,5 +1,5 @@
 class DunGen 
-{
+{ 
     private int _nextRoom = 10;
     
     public DunGen(){}
