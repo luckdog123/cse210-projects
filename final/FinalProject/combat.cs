@@ -124,11 +124,29 @@ class BeatemUpCombat
             PlayerHealth = 100; // Default health
         }
     }
-    // public int GetPlayerHealth()
-    // {
-
-    //     // return ;
-    // }
+    public static int GetPlayerHealth()
+    {
+        string filePath = "player_health.txt";
+        if (File.Exists(filePath))
+        {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                if (int.TryParse(reader.ReadLine(), out int loadedHealth))
+                {
+                    return loadedHealth;
+                }
+                else
+                {
+                    return 100; // Default health
+                }
+            }
+        }
+        else
+        {
+            return 100; // Default health
+        }
+        // return ;
+    }
 
     // Weapon-related methods
     public (WeaponType, int) GetWeapon(WeaponType weaponType)
@@ -319,6 +337,15 @@ class BeatemUpCombat
         using (StreamWriter writer = new StreamWriter(filePath))
         {
             writer.WriteLine(PlayerHealth);
+        }
+    }
+    public static void Minus15PlayerHealthToFile(int _PlayerHealth)
+    {
+        _PlayerHealth -= 15; // Reduce player health by 15
+        string filePath = "player_health.txt";
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            writer.WriteLine(_PlayerHealth);
         }
     }
 
