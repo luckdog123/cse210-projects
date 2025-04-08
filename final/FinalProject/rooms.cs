@@ -55,9 +55,9 @@ abstract class Room
             Console.WriteLine($"3. {Prompt.RoomHints(c3)}");
             // Console.WriteLine($"Go to {c3}? "); //delete these lines once its working
         }
-        int choice;
+        
+        int choice = int.Parse(Console.ReadLine() ?? "0");
     
-                
         switch(choice){
             case 1:
                 choice = c1;            
@@ -68,11 +68,14 @@ abstract class Room
             case 3:
                 choice = c3;
                 break;
-            
+            default:
+                Console.WriteLine("Invalid choice. Defaulting to the first option.");
+                choice = c1;
+                break;
         }
         return choice;
     }
-    public virtual int TimeToLeave(int currentRoom)
+    public static int TimeToLeave(int currentRoom)
     {
         // room discription prompt
         // room 

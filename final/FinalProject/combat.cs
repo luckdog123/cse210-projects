@@ -357,4 +357,55 @@ class BeatemUpCombat
             writer.WriteLine(100); // Reset health to full and save to file
         }
     }
+    public bool BossFight()
+    {
+        Console.WriteLine("The final battle begins! Prepare to face the Boss!");
+
+        // Reset combat for the boss fight
+        ResetCombat();
+
+        // Load player health from file
+        PlayerHealth = GetPlayerHealth();
+
+        // Display initial combat status
+        DisplayCombatStatus();
+
+        while (!IsCombatOver())
+        {
+            Console.WriteLine("\nYour turn:");
+            AttackEnemy();
+
+            if (IsCombatOver())
+            {
+                Console.WriteLine("Combat is over!");
+                break;
+            }
+
+            Console.WriteLine("\nBoss's turn:");
+            EnemyAttacksPlayer();
+
+            if (IsCombatOver())
+            {
+                Console.WriteLine("Combat is over!");
+                break;
+            }
+
+            DisplayCombatStatus();
+        }
+
+        SavePlayerHealthToFile();
+
+        if (PlayerHealth <= 0)
+        {
+            Console.WriteLine("You have been defeated by the Boss!");
+            return false; // Indicate the player died
+        }
+        else if (CurrentEnemy.Health <= 0)
+        {
+            Console.WriteLine("Congratulations! You have defeated the Boss and won the game!");
+            return true; // Indicate the player won
+        }
+
+        return false; // Default return value to satisfy all code paths
+    }
 }
