@@ -93,13 +93,13 @@ class BeatemUpCombat
     }
 
     // Methods for combat setup
-    public void ResetCombat(EnemyType enemyType)
+    public void ResetCombat() // use this for the boss fight
     {
         PlayerHealth = 100; // Default player health
         PlayerAttackPower = 10; // Default player attack power
         PlayerDefense = 5; // Default player defense
         HasWeapon = false; // Default player does not have a weapon
-        CurrentEnemy = new Enemy(enemyType); // Initialize the enemy
+        CurrentEnemy = new Enemy(EnemyType.Boss); // Initialize the enemy
     }
 
     public void LoadPlayerHealthFromFile()

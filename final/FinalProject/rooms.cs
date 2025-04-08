@@ -42,22 +42,22 @@ abstract class Room
     }
     protected static int DisplayRoomChoices(int c1 ,int c2 = 0,int c3=0)
     {   
-        Console.WriteLine($"{Prompt.RoomHints(c1)}");
+        Console.WriteLine($"1. {Prompt.RoomHints(c1)}");
         // Console.WriteLine($"Go to {c1}? "); //delete these lines once its working
 
         if(c2 != 0)
         {
-            Console.WriteLine($"{Prompt.RoomHints(c2)}");
+            Console.WriteLine($"2. {Prompt.RoomHints(c2)}");
             // Console.WriteLine($"Go to {c2}? "); //delete these lines once its working
         }
         if(c3 != 0)
         {
-            Console.WriteLine($"{Prompt.RoomHints(c3)}");
+            Console.WriteLine($"3. {Prompt.RoomHints(c3)}");
             // Console.WriteLine($"Go to {c3}? "); //delete these lines once its working
         }
         int choice;
     
-        choice = int.Parse(Console.ReadLine());        
+                
         switch(choice){
             case 1:
                 choice = c1;            
