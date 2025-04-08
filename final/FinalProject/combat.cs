@@ -102,7 +102,7 @@ class BeatemUpCombat
         CurrentEnemy = new Enemy(EnemyType.Boss); // Initialize the enemy
     }
 
-    public void LoadPlayerHealthFromFile()
+    private void LoadPlayerHealthFromFile()
     {
         string filePath = "player_health.txt";
         if (File.Exists(filePath))
@@ -124,6 +124,11 @@ class BeatemUpCombat
             PlayerHealth = 100; // Default health
         }
     }
+    // public int GetPlayerHealth()
+    // {
+
+    //     // return ;
+    // }
 
     // Weapon-related methods
     public (WeaponType, int) GetWeapon(WeaponType weaponType)
