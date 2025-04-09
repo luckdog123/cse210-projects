@@ -37,32 +37,32 @@ class DunGen
         // whereWeGoing is still equaling 0 so we need to fix that
         if (whereWeGoing == 1)
         {
-            Console.WriteLine("this is an empty room");
+            // Console.WriteLine("this is an empty room");
             EmptyRoom emptyRoom = new EmptyRoom();
              _nextRoom = emptyRoom.TheresNothingHere();
         }
         else if (whereWeGoing == 2)
         {
-            Console.WriteLine("this is a combat room");
+            // Console.WriteLine("this is a combat room");
             FightClub combatRoom = new FightClub();
              _nextRoom = combatRoom.YoullNeedHands();
             // selectedRoom = 2;
         }
         else if (whereWeGoing == 3)
         {
-            Console.WriteLine("this is a trap room");
+            // Console.WriteLine("this is a trap room");
             TrapRoom trapRoom = new TrapRoom();
              _nextRoom = trapRoom.ItsATrap();
         }
         else if (whereWeGoing == 4)
         {
-            Console.WriteLine("this is a treasure room");
+            // Console.WriteLine("this is a treasure room");
             TreasureRoom treasureRoom = new TreasureRoom();
              _nextRoom = treasureRoom.ChestMonster();
         }
         else if (whereWeGoing == 5)
         {
-            Console.WriteLine("this is the find a friend room");
+            // Console.WriteLine("this is the find a friend room");
             DogRoom dogRoom = new DogRoom();
              _nextRoom = dogRoom.WhosAGoodBoy();
         }

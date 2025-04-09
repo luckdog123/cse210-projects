@@ -8,11 +8,11 @@ class Prompt
             "The room is barren, with only the faint sound of your footsteps echoing off the walls. A chill runs down your spine as you glance around. \n Press enter to continue",
             "The emptiness of the room is almost deafening. The air feels heavy, and you can't shake the feeling that you're being watched. \n Press enter to continue",
         };
-    private static string[] _trapRoom = // trap room flavor text
+    public static string[] _trapRoom = // trap room flavor text
         {
             "You walk into the room confendently and immiditly slip and fall. You take 15 damage.\n Press enter to continue",
             "You walk in and see a small window, you look out and a wasp flys in and stings you on your nose. You take 15 damage.\n Press enter to continue",
-            "Whene you enter the room and a log on a chain swings from the celing. YOu manage to doge but you hurt your wrist when you rolled out of the way. You take 15 damage.\n Press enter to continue",
+            "Whene you enter the room and a log on a chain swings from the celing. You manage to doge but you hurt your wrist when you rolled out of the way. You take 15 damage.\n Press enter to continue",
         };
         
         private static string[] _combatRoom =
@@ -59,7 +59,7 @@ class Prompt
     };
     public static string RoomHints(int NextPossibleRoom)
     {
-        string roomHint = "If youre reading this somthing didnt work right line 37 text prompt storage";
+        string roomHint = "If youre reading this somthing didnt work right line 62 text prompt storage";
         Random random = new Random();
         int promtChoice = random.Next(1, _toRoom1.Length);
         switch(NextPossibleRoom)

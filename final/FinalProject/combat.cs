@@ -1,7 +1,7 @@
 using System;
 using System.IO;
+using System.Collections.Generic;
 
-// ai was used to generate this code
 // Enemy types
 public enum EnemyType
 {
@@ -47,25 +47,22 @@ public class Enemy
                 throw new ArgumentException("Invalid enemy type");
         }
     }
-    
-    
+
+    public string GetEnemyDescription()
+    {
+        return Type switch
+        {
+            EnemyType.Grunt => "A weak and expendable enemy, often found in large numbers.",
+            EnemyType.Brute => "A strong and tough enemy, capable of dealing heavy damage.",
+            EnemyType.Assassin => "A swift and deadly enemy, specializing in quick attacks.",
+            EnemyType.Boss => "The ultimate challenge, a powerful foe with immense strength.",
+            _ => "An unknown enemy type."
+        };
+    }
 }
 
-class BeatemUpCombat
+public class BeatemUpCombat
 {
-    public static EnemyType ChooseRandomEnemyType()
-    {
-        Array enemyTypes = Enum.GetValues(typeof(EnemyType));
-        Random random = new Random();
-        EnemyType randomEnemy;
-
-        do
-        {
-            randomEnemy = (EnemyType)enemyTypes.GetValue(random.Next(enemyTypes.Length));
-        } while (randomEnemy == EnemyType.Boss);
-
-        return randomEnemy;
-    }
     // Properties
     public int PlayerHealth { get; set; }
     public int PlayerAttackPower { get; set; }
@@ -84,24 +81,39 @@ class BeatemUpCombat
     // Constructor
     public BeatemUpCombat()
     {
-        PlayerHealth = 100; // Default player health
-        PlayerAttackPower = 10; // Default player attack power
-        PlayerDefense = 5; // Default player defense
-        HasWeapon = false; // Default player does not have a weapon
-        CurrentEnemy = new Enemy(ChooseRandomEnemyType()); // Initialize the enemy with a random enemy type
-        LoadPlayerHealthFromFile(); // Load player health from file during initialization
+        PlayerHealth = 100;
+        PlayerAttackPower = 10;
+        PlayerDefense = 5;
+        HasWeapon = false;
+        CurrentEnemy = new Enemy(ChooseRandomEnemyType());
+        LoadPlayerHealthFromFile();
     }
 
-    // Methods for combat setup
-    public void ResetCombat() // use this for the boss fight
+    // Combat setup methods
+    public void ResetCombat()
     {
-        PlayerHealth = 100; // Default player health
-        PlayerAttackPower = 10; // Default player attack power
-        PlayerDefense = 5; // Default player defense
-        HasWeapon = false; // Default player does not have a weapon
-        CurrentEnemy = new Enemy(EnemyType.Boss); // Initialize the enemy
+        PlayerHealth = 100;
+        PlayerAttackPower = 10;
+        PlayerDefense = 5;
+        HasWeapon = false;
+        CurrentEnemy = new Enemy(EnemyType.Boss);
     }
 
+    public static EnemyType ChooseRandomEnemyType()
+    {
+        Array enemyTypes = Enum.GetValues(typeof(EnemyType));
+        Random random = new Random();
+        EnemyType randomEnemy;
+
+        do
+        {
+            randomEnemy = (EnemyType)enemyTypes.GetValue(random.Next(enemyTypes.Length));
+        } while (randomEnemy == EnemyType.Boss);
+
+        return randomEnemy;
+    }
+
+    // File handling methods
     private void LoadPlayerHealthFromFile()
     {
         string filePath = "player_health.txt";
@@ -115,15 +127,16 @@ class BeatemUpCombat
                 }
                 else
                 {
-                    PlayerHealth = 100; // Default health
+                    PlayerHealth = 100;
                 }
             }
         }
         else
         {
-            PlayerHealth = 100; // Default health
+            PlayerHealth = 100;
         }
     }
+
     public static int GetPlayerHealth()
     {
         string filePath = "player_health.txt";
@@ -135,38 +148,95 @@ class BeatemUpCombat
                 {
                     return loadedHealth;
                 }
-                else
-                {
-                    return 100; // Default health
-                }
             }
         }
-        else
+        return 100;
+    }
+
+    private void SavePlayerHealthToFile()
+    {
+        string filePath = "player_health.txt";
+        using (StreamWriter writer = new StreamWriter(filePath))
         {
-            return 100; // Default health
+            writer.WriteLine(PlayerHealth);
         }
-        // return ;
+    }
+
+    public static void Minus15PlayerHealthToFile(int _PlayerHealth)
+    {
+        _PlayerHealth -= 15;
+        string filePath = "player_health.txt";
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            writer.WriteLine(_PlayerHealth);
+        }
+    }
+
+    public static void ResetPlayerHealthToFull()
+    {
+        string filePath = "player_health.txt";
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            writer.WriteLine(100);
+        }
     }
 
     // Weapon-related methods
     public (WeaponType, int) GetWeapon(WeaponType weaponType)
     {
-        switch (weaponType)
+        return weaponType switch
         {
-            case WeaponType.Gun:
-                return (WeaponType.Gun, 50); // Gun damage
-            case WeaponType.Mace:
-                return (WeaponType.Mace, 35); // Mace damage
-            case WeaponType.TableLeg:
-                return (WeaponType.TableLeg, 20); // Table leg damage
-            default:
-                throw new ArgumentException("Invalid weapon type");
+            WeaponType.Gun => (WeaponType.Gun, 50),
+            WeaponType.Mace => (WeaponType.Mace, 35),
+            WeaponType.TableLeg => (WeaponType.TableLeg, 20),
+            _ => throw new ArgumentException("Invalid weapon type")
+        };
+    }
+
+    public static void SavePlayerWeaponToFile(int weaponChoice)
+    {
+        string filePath = "player_weapons.txt";
+        WeaponType weapon = weaponChoice switch
+        {
+            1 => WeaponType.Gun,
+            2 => WeaponType.Mace,
+            3 => WeaponType.TableLeg,
+            _ => throw new ArgumentException("Invalid weapon choice!")
+        };
+
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            writer.WriteLine(weapon.ToString());
         }
     }
 
-    public bool PlayerHasWeapon()
+    public List<WeaponType> LoadPlayerWeaponsFromFile()
     {
-        return HasWeapon;
+        string filePath = "player_weapons.txt";
+        List<WeaponType> weapons = new List<WeaponType>();
+
+        if (File.Exists(filePath))
+        {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (Enum.TryParse(line, out WeaponType weapon))
+                    {
+                        weapons.Add(weapon);
+                    }
+                }
+            }
+        }
+
+        return weapons;
+    }
+
+    public bool DoesPlayerHaveWeapon()
+    {
+        var weapons = LoadPlayerWeaponsFromFile();
+        return weapons.Count > 0;
     }
 
     // Combat actions
@@ -182,18 +252,18 @@ class BeatemUpCombat
                 case "1":
                     Console.WriteLine("You threw a punch!");
                     Random random = new Random();
-                    PlayerAttackPower = random.Next(8, 13); // Punch damage range: 8 to 12
+                    PlayerAttackPower = random.Next(8, 13);
                     break;
                 case "2":
                     Console.WriteLine("You delivered a kick!");
                     Random randomKick = new Random();
-                    PlayerAttackPower = randomKick.Next(12, 18); // Kick damage range: 12 to 17
+                    PlayerAttackPower = randomKick.Next(12, 18);
                     break;
                 case "3":
                     if (weaponChoice == null)
                     {
                         Console.WriteLine("You don't have a weapon yet! Try again.");
-                        continue; // Allow the player to try again
+                        continue;
                     }
                     else
                     {
@@ -209,51 +279,46 @@ class BeatemUpCombat
                         Random randomWeapon = new Random();
                         PlayerAttackPower = selectedWeapon switch
                         {
-                            WeaponType.Gun => randomWeapon.Next(45, 55), // Gun damage range: 45 to 54
-                            WeaponType.Mace => randomWeapon.Next(30, 40), // Mace damage range: 30 to 39
-                            WeaponType.TableLeg => randomWeapon.Next(18, 25), // Table leg damage range: 18 to 24
+                            WeaponType.Gun => randomWeapon.Next(45, 55),
+                            WeaponType.Mace => randomWeapon.Next(30, 40),
+                            WeaponType.TableLeg => randomWeapon.Next(18, 25),
                             _ => weapon.Item2
                         };
                     }
                     break;
                 default:
                     Console.WriteLine("Invalid choice! Try again.");
-                    continue; // Allow the player to try again
+                    continue;
             }
 
             CurrentEnemy.Health -= PlayerAttackPower;
             Console.WriteLine($"You attacked the enemy! Enemy health is now: {CurrentEnemy.Health}");
-            break; // Exit the loop after a successful attack
+            break;
         }
-    // End of AttackEnemy method
-
-        CurrentEnemy.Health -= PlayerAttackPower;
-        Console.WriteLine($"You attacked the enemy! Enemy health is now: {CurrentEnemy.Health}");
     }
 
     public void EnemyAttacksPlayer()
     {
         Console.WriteLine("The enemy is about to attack! Get ready to dodge!");
-        Console.WriteLine("Press the correct key sequence to evade the attack!");
+        Console.WriteLine("Press the correct key to evade the attack!");
         Random random = new Random();
 
-        // Generate a random key sequence for the player to press
-        string[] keySequence = { "W", "A", "S", "D" };
-        string sequenceToPress = string.Join(" ", keySequence.OrderBy(x => random.Next()).Take(3));
-        Console.WriteLine($"Key sequence: {sequenceToPress}");
+        string[] keys = { "W", "A", "S", "D" };
+        string keyToPress = keys[random.Next(keys.Length)];
+        Console.WriteLine($"Press the key: {keyToPress}");
 
         Console.WriteLine("The enemy is preparing to attack...");
-        System.Threading.Thread.Sleep(random.Next(500, 1200)); // Delay before attack
+        System.Threading.Thread.Sleep(random.Next(500, 1200));
 
-        Console.WriteLine("NOW! Enter the sequence:");
+        Console.WriteLine("NOW! Press the key:");
         var startTime = DateTime.Now;
         string playerInput = Console.ReadLine();
         var reactionTime = (DateTime.Now - startTime).TotalMilliseconds;
 
-        const double desiredReactionTime = 500; // Desired reaction time in milliseconds
-        const int maxDamage = 25; // Maximum damage if the player fails completely
+        const double desiredReactionTime = 1000;
+        const int maxDamage = 25;
 
-        if (playerInput.ToUpper() == sequenceToPress)
+        if (playerInput.ToUpper() == keyToPress)
         {
             if (reactionTime <= desiredReactionTime)
             {
@@ -289,6 +354,10 @@ class BeatemUpCombat
 
     public bool StartCombat()
     {
+        DoesPlayerHaveWeapon();
+        Console.WriteLine("As you walk into the room you are suddenly confronted. You unfortunately realize that you are not alone in this room.");
+        Console.WriteLine($"Enemy Type: {CurrentEnemy.Type}");
+        Console.WriteLine($"Enemy Description: {CurrentEnemy.GetEnemyDescription()}");
         Console.WriteLine("Combat has started!");
         DisplayCombatStatus();
 
@@ -320,54 +389,23 @@ class BeatemUpCombat
         if (PlayerHealth <= 0)
         {
             Console.WriteLine("You have been defeated!");
-            return false; // Indicate the player died
+            return false;
         }
         else if (CurrentEnemy.Health <= 0)
         {
             Console.WriteLine("You have defeated the enemy!");
-            return true; // Indicate the player won
+            return true;
         }
 
-        return false; // Default return value
+        return false;
     }
 
-    private void SavePlayerHealthToFile()
-    {
-        string filePath = "player_health.txt";
-        using (StreamWriter writer = new StreamWriter(filePath))
-        {
-            writer.WriteLine(PlayerHealth);
-        }
-    }
-    public static void Minus15PlayerHealthToFile(int _PlayerHealth)
-    {
-        _PlayerHealth -= 15; // Reduce player health by 15
-        string filePath = "player_health.txt";
-        using (StreamWriter writer = new StreamWriter(filePath))
-        {
-            writer.WriteLine(_PlayerHealth);
-        }
-    }
-
-    public static void ResetPlayerHealthToFull()
-    {
-        string filePath = "player_health.txt";
-        using (StreamWriter writer = new StreamWriter(filePath))
-        {
-            writer.WriteLine(100); // Reset health to full and save to file
-        }
-    }
     public bool BossFight()
     {
         Console.WriteLine("The final battle begins! Prepare to face the Boss!");
 
-        // Reset combat for the boss fight
         ResetCombat();
-
-        // Load player health from file
         PlayerHealth = GetPlayerHealth();
-
-        // Display initial combat status
         DisplayCombatStatus();
 
         while (!IsCombatOver())
@@ -398,14 +436,14 @@ class BeatemUpCombat
         if (PlayerHealth <= 0)
         {
             Console.WriteLine("You have been defeated by the Boss!");
-            return false; // Indicate the player died
+            return false;
         }
         else if (CurrentEnemy.Health <= 0)
         {
             Console.WriteLine("Congratulations! You have defeated the Boss and won the game!");
-            return true; // Indicate the player won
+            return true;
         }
 
-        return false; // Default return value to satisfy all code paths
+        return false;
     }
 }
