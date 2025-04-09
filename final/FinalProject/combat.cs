@@ -244,6 +244,13 @@ public class BeatemUpCombat
     {
         while (true)
         {
+            // var playerWeapons = LoadPlayerWeaponsFromFile();
+            // HasWeapon = playerWeapons.Count > 0;
+            // if (HasWeapon)
+            // {
+            //     var firstWeapon = playerWeapons[0];
+            //     Console.WriteLine($"You have a weapon: {firstWeapon}");
+            // }
             Console.WriteLine("Choose your attack: 1) Punch 2) Kick 3) Use Weapon");
             string choice = Console.ReadLine();
 
@@ -354,7 +361,8 @@ public class BeatemUpCombat
 
     public bool StartCombat()
     {
-        DoesPlayerHaveWeapon();
+        
+
         Console.WriteLine("As you walk into the room you are suddenly confronted. You unfortunately realize that you are not alone in this room.");
         Console.WriteLine($"Enemy Type: {CurrentEnemy.Type}");
         Console.WriteLine($"Enemy Description: {CurrentEnemy.GetEnemyDescription()}");
