@@ -21,7 +21,7 @@ class DunGen
         return dunLength[randomIndex];
     }
 
-    public static int MakeARoom(int lastRoomType , int nextRoomChoice=10)
+    public int MakeARoom(int lastRoomType , int nextRoomChoice=10)
     {
         int whereWeGoing = 0;
         if(nextRoomChoice < 6)
@@ -39,32 +39,32 @@ class DunGen
         {
             Console.WriteLine("this is an empty room");
             EmptyRoom emptyRoom = new EmptyRoom();
-            selectedRoom = emptyRoom.TheresNothingHere();
+             _nextRoom = emptyRoom.TheresNothingHere();
         }
         else if (whereWeGoing == 2)
         {
             Console.WriteLine("this is a combat room");
             FightClub combatRoom = new FightClub();
-            selectedRoom = combatRoom.YoullNeedHands();
-            selectedRoom = 2;
+             _nextRoom = combatRoom.YoullNeedHands();
+            // selectedRoom = 2;
         }
         else if (whereWeGoing == 3)
         {
             Console.WriteLine("this is a trap room");
             TrapRoom trapRoom = new TrapRoom();
-            selectedRoom = trapRoom.ItsATrap();
+             _nextRoom = trapRoom.ItsATrap();
         }
         else if (whereWeGoing == 4)
         {
             Console.WriteLine("this is a treasure room");
             TreasureRoom treasureRoom = new TreasureRoom();
-            selectedRoom = treasureRoom.ChestMonster();
+             _nextRoom = treasureRoom.ChestMonster();
         }
         else if (whereWeGoing == 5)
         {
             Console.WriteLine("this is the find a friend room");
             DogRoom dogRoom = new DogRoom();
-            selectedRoom = dogRoom.WhosAGoodBoy();
+             _nextRoom = dogRoom.WhosAGoodBoy();
         }
 
 
